@@ -20,6 +20,7 @@ const App = (props) => {
   //       setCurrentUser(null);
   //     });
   // }, []);
+
   return (
     <Router>
       <TopBar />
