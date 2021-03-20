@@ -1,0 +1,92 @@
+@import "./foundation/settings";
+@import "~foundation-sites/scss/foundation";
+@include foundation-everything;
+@import 'antd/dist/antd.css';
+
+// place global css here
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  -moz-tab-size: 4;
+  tab-size: 4;
+}
+
+.bomb-icon {
+  height: 40px;
+}
+
+.landing-page-top {
+  background-image: url(https://around-the-block.s3.amazonaws.com/demining.jpg);
+  background-position: center center fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 579px;
+  z-index: 2;
+}
+
+.landing-text {
+  line-height: .84;
+  padding-top: 10vh;
+}
+
+.landing-title {
+  font: 700 15px/1 sofia-pro,sans-serif;
+  // color: #365ca3;
+  color: teal;
+  letter-spacing: -4px;
+  font-size: 62px;
+  align-items: top;
+  margin: 0 auto 15px;
+  line-height: .84;
+}
+
+.landing-subheader {
+  font-family: sofia-pro,sans-serif;
+  font-size: 20px;
+  color: #08142c;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.get-started-button {
+  align-items: center;
+}
+
+.get-started-text {
+  font-size: 30px;
+}
+
+.rounded-button-extra {
+  border-radius: 80px;
+  padding: 0.7em 1.5em;
+  background-color: green;
+}
+
+.landing-grid {
+  background-color: white;
+}
+
+.subsection-title {
+  font: 600 15px/1 sofia-pro,sans-serif;
+  color: teal;
+  letter-spacing: -3px;
+  font-size: 40px;
+}
+
+.landing-subsection img {
+  margin-bottom: 50px;
+  max-height: 270px;
+}
+
+.subsection p {
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+.subsection-img-div {
+  align-self: center;
+}
