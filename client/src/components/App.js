@@ -8,7 +8,6 @@ import LandingPage from "./layout/LandingPage"
 import GameContainer from "./gameComponents/GameContainer"
 
 const App = (props) => {
-
   return (
     <Router>
       <TopBar />
