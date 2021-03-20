@@ -5,7 +5,6 @@ import { Layout } from 'antd';
 const { Header, Content } = Layout;
 import FeatureDescriptions from './FeatureDescriptions'
 
-
 const LandingPage = props => {
 
   return (
@@ -33,7 +32,7 @@ const LandingPage = props => {
                   3. Place the flags
                 </p>
                 <div className="get-started-button">
-                  <Link to="/play" className="rounded-button-extra button large">
+                  <Link to="/game" className="rounded-button-extra button large">
                     Play Now!
                   </Link>
                 </div>  
