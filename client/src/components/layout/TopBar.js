@@ -16,7 +16,11 @@ const TopBar = props => {
             BombSweeper
           </Link>
         </Menu.Item>
-        <Menu.Item key="3" style={{float: "left"}}>Play!</Menu.Item>  
+        <Menu.Item key="3" style={{float: "left"}}>
+          <Link to="/game">
+            Play!
+          </Link>
+        </Menu.Item>  
       </Menu>
     </Header>
   );
