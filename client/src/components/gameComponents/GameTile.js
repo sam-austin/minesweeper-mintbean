@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 
-const GameTile = (props) => {
+const GameTile = ({row, column, value}) => {
 return <div>
-  This is a game tile. It contains boolean stt and onclick functionsthat run game gllogic. 
+    position:{row},{column} value:{value}
   </div>
 }
 
-export default GameTile
+export default GameTile;
