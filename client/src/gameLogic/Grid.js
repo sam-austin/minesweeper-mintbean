@@ -1,5 +1,4 @@
-import Cell from "./Cell.js"
-const { isEqual } = require("lodash");
+import Cell from "./Cell.js";
 
 class Grid {
   constructor(width, height, mineCount) {
@@ -10,77 +9,60 @@ class Grid {
   }
 
   createCells() {
-    const cells = []
+    const cells = [];
     for (let row = 0; row < this.height; row++) {
       for (let column = 0; column < this.width; column++) {
-        cells.push(new Cell(row, column))
+        cells.push(new Cell(row, column));
       }
     }
-    return cells
+    return cells;
   }
 
-  setMines() {
+  getRandomCell() {
+    const randomIndex = Math.floor(Math.random() * this.cells.length);
+    return this.cells[randomIndex];
+  }
+  // FIXME: prevent mines from being clumped together
+  // FIXME: mine can't be placed in any cell adjacent to initial cell either.
 
+  setMines(initialCell) {
+    let i = 0;
+    while (i < this.mineCount) {
+      const randomCell = this.getRandomCell();
+      if (randomCell.row !== initialCell.row && randomCell.column !== initialCell.column) {
+        if (!randomCell.value) {
+          randomCell.value = "*";
+          i++;
+        }
+      }
+    }
   }
 
+  getAdjacentCells(cell) {
+    const adjacentPositions = [
+      {row: cell.row + 1, column: cell.column + 1}, 
+      {row: cell.row + 1, column: cell.column},
+      {row: cell.row + 1, column: cell.column - 1},
+      {row: cell.row, column: cell.column + 1},
+      {row: cell.row, column: cell.column - 1},
+      {row: cell.row - 1, column: cell.column - 1},
+      {row: cell.row - 1, column: cell.column},
+      {row: cell.row - 1, column: cell.column + 1}
+    ];
 
+    return this.cells.filter((cell) => {
+      return adjacentPositions.some((pos) => cell.row == pos.row && cell.column == pos.column);
+    });
+  }
+
+  setProximityNumbers() {
+    this.cells.forEach((cell) => {
+      if (cell.value !== "*") {
+        const adjacentCells = this.getAdjacentCells(cell);
+        cell.value = adjacentCells.filter((adjacentCell) => adjacentCell.value === "*").length;
+      }
+    });
+  }
 }
 
-export default Grid
-
-
-// const createGrid = (width, height) => {
-//  
-// };
-// const getRandomCell = (grid) => {
-//   const randomRowIndex = Math.floor(Math.random() * grid.length);
-//   const randomColumnIndex = Math.floor(Math.random() * grid[0].length);
-//   return [randomRowIndex, randomColumnIndex]
-// };
-// // FIXME: prevent mines from being clumped together
-// const setMines = (grid, initialCell, numMines) => {
-//   let i = 0;
-//   while (i < numMines) {
-//     let [row, col] = getRandomCell(grid);
-//     if (!isEqual([row, col], initialCell)) {
-//       if (grid[row][col] === "_") {
-//         grid[row][col] = "*";
-//         i++;
-//       }
-//     }
-//   }
-//   return grid;
-// };
-// const setProximityNumbers = (grid) => {
-//   for (let row = 0; row < grid.length; row++) {
-//     for (let col = 0; col < grid[row].length; col++) {
-//       if (grid[row][col] !== '*') {
-//         let adjacentCells = [
-//           grid[row][col + 1],
-//           grid[row][col - 1],
-//         ];
-//         if (grid[row + 1]) {
-//           adjacentCells = [
-//             ...adjacentCells,
-//             grid[row + 1][col + 1],
-//             grid[row + 1][col],
-//             grid[row + 1][col - 1]]
-//         }
-//         if (grid[row - 1]) {
-//           adjacentCells = [
-//             ...adjacentCells,
-//             grid[row - 1][col - 1],
-//             grid[row - 1][col],
-//             grid[row - 1][col + 1]
-//           ]
-//         }
-//         const mineCount = adjacentCells.filter(cell => cell === "*").length;
-//         grid[row][col] = mineCount;
-//       }
-//     }
-//   }
-//   return grid;
-// };
-// const testGrid = (createGrid(3, 4));
-// const minedGrid = setMines(testGrid, [1, 1], 3)
-// console.log(setProximityNumbers(minedGrid));
+export default Grid;
