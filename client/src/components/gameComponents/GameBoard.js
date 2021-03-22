@@ -1,25 +1,38 @@
-import React from "react"
+import React, {useState} from "react"
 import GameTile from "./GameTile"
 import Grid from "../../gameLogic/Grid"
 
 const GameBoard = (props) => {
+  const [firstClick, setFirstClick] = useState(true);
   const grid = new Grid(4, 4, 3);
-  grid.setMines({row: 2, column: 2})
-  grid.setProximityNumbers()
-  const tiles = grid.cells.map((cell, index) => {
+  const [tilesData, setTilesData] = useState(grid.cells);
+
+  const placeMines = (cell) => {
+    if (firstClick) {
+      grid.setMines(cell);
+      grid.setProximityNumbers();
+      setTilesData(grid.cells);
+    }
+    setFirstClick(false);
+  };
+
+  const tiles = tilesData.map((cell, index) => {
     return (
       <GameTile 
         key={index}
         row={cell.row}
         column={cell.column}
         value={cell.value}
+        placeMines={placeMines}
       />
     )
-  })
-  return <div>
-    This is the gameboard, which contains a series of gametiles, iterated through and populated according to a set size. 
-    {tiles}
+  });
+
+  return (
+    <div className="game-board">
+      {tiles}
     </div>
+  )
 }
 
 export default GameBoard
