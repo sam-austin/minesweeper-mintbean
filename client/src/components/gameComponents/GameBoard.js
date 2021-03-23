@@ -1,10 +1,10 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import GameTile from "./GameTile"
 import Grid from "../../gameLogic/Grid"
 
 const GameBoard = (props) => {
   const [firstClick, setFirstClick] = useState(true);
-  const grid = new Grid(4, 4, 3);
+  const grid = new Grid(8, 8, 9);
   const [tilesData, setTilesData] = useState(grid.cells);
 
   const placeMines = (cell) => {
@@ -18,7 +18,7 @@ const GameBoard = (props) => {
 
   const tiles = tilesData.map((cell, index) => {
     return (
-      <GameTile 
+      <GameTile
         key={index}
         row={cell.row}
         column={cell.column}
