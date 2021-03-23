@@ -26,13 +26,16 @@ class Grid {
   // FIXME: mine can't be placed in any cell adjacent to initial cell either.
 
   setMines(initialCell) {
+    const adjacentCells = this.getAdjacentCells(initialCell)
     let i = 0;
     while (i < this.mineCount) {
       const randomCell = this.getRandomCell();
       if (randomCell.row !== initialCell.row && randomCell.column !== initialCell.column) {
-        if (!randomCell.value) {
-          randomCell.value = "*";
-          i++;
+        if (!adjacentCells.some(cell => cell.row === randomCell.row && cell.column === randomCell.column)) {
+          if (!randomCell.value) {
+            randomCell.value = "*";
+            i++;
+          }
         }
       }
     }
@@ -40,14 +43,14 @@ class Grid {
 
   getAdjacentCells(cell) {
     const adjacentPositions = [
-      {row: cell.row + 1, column: cell.column + 1}, 
-      {row: cell.row + 1, column: cell.column},
-      {row: cell.row + 1, column: cell.column - 1},
-      {row: cell.row, column: cell.column + 1},
-      {row: cell.row, column: cell.column - 1},
-      {row: cell.row - 1, column: cell.column - 1},
-      {row: cell.row - 1, column: cell.column},
-      {row: cell.row - 1, column: cell.column + 1}
+      { row: cell.row + 1, column: cell.column + 1 },
+      { row: cell.row + 1, column: cell.column },
+      { row: cell.row + 1, column: cell.column - 1 },
+      { row: cell.row, column: cell.column + 1 },
+      { row: cell.row, column: cell.column - 1 },
+      { row: cell.row - 1, column: cell.column - 1 },
+      { row: cell.row - 1, column: cell.column },
+      { row: cell.row - 1, column: cell.column + 1 }
     ];
 
     return this.cells.filter((cell) => {

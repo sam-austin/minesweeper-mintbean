@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import GameTile from "./GameTile"
 import Grid from "../../gameLogic/Grid"
 
@@ -18,7 +18,7 @@ const GameBoard = (props) => {
 
   const tiles = tilesData.map((cell, index) => {
     return (
-      <GameTile 
+      <GameTile
         key={index}
         row={cell.row}
         column={cell.column}
