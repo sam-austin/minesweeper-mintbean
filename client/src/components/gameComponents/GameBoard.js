@@ -1,17 +1,18 @@
-import React, { useState } from "react"
-import GameTile from "./GameTile"
-import Grid from "../../gameLogic/Grid"
+import React, { useState } from "react";
+import GameTile from "./GameTile";
+import Grid from "../../gameLogic/Grid";
 
-const GameBoard = (props) => {
+const GameBoard = ({startTimer}) => {
   const [firstClick, setFirstClick] = useState(true);
   const grid = new Grid(8, 8, 9);
   const [tilesData, setTilesData] = useState(grid.cells);
 
-  const placeMines = (cell) => {
+  const startGame = (cell) => {
     if (firstClick) {
       grid.setMines(cell);
       grid.setProximityNumbers();
       setTilesData(grid.cells);
+      startTimer();
     }
     setFirstClick(false);
   };
@@ -23,7 +24,7 @@ const GameBoard = (props) => {
         row={cell.row}
         column={cell.column}
         value={cell.value}
-        placeMines={placeMines}
+        startGame={startGame}
       />
     )
   });
@@ -32,7 +33,7 @@ const GameBoard = (props) => {
     <div className="game-board">
       {tiles}
     </div>
-  )
-}
+  );
+};
 
-export default GameBoard
+export default GameBoard;
