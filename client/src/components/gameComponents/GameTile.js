@@ -37,7 +37,7 @@ const GameTile = ({ row, column, value, uncovered, handleTileClick, determineRes
         break;
       default: valueClass = "number"
     }
-    // determineResult(value)
+    determineResult(value)
   }
 
 
