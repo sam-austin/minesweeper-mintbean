@@ -3,6 +3,11 @@ class Cell {
     this.row = row;
     this.column = column;
     this.value = null;
+    this.uncovered = false;
+  }
+
+  uncover() {
+    this.uncovered = true;
   }
 }
 
