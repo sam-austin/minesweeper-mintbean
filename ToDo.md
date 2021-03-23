@@ -11,3 +11,7 @@
 - Create stopwatch timer, ideally to be saved as record on win.
 
 - Create win state: all mines flagged === board state freezes, time score saved, victory/play again message; create lose state: mine tripped === board state freezes, defeat/play again message.
+
+- Set difficulty level dropdown menu
+
+- Game rules/ help popover 
