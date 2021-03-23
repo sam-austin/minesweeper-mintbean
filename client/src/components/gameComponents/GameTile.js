@@ -1,9 +1,25 @@
-import React from "react"
+import React, {useState} from "react";
 
-const GameTile = (props) => {
-return <div>
-  This is a game tile. It contains boolean stt and onclick functionsthat run game gllogic. 
-  </div>
+const GameTile = ({row, column, value, placeMines}) => {
+  const [uncover, setUncover] = useState(false);
+  const tileClickHandler = () => {
+    placeMines({row, column});
+    setUncover(true);
+  };
+
+  let cursorStyles;
+  if (!uncover) {
+    cursorStyles = {cursor: "pointer"};
+  }
+
+return (
+    <div 
+      className="game-tile" 
+      style={cursorStyles} 
+      onClick = {tileClickHandler}>
+      {!uncover || value}
+    </div>
+  )
 }
 
-export default GameTile
+export default GameTile;
