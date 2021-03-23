@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Gradient from "javascript-color-gradient"
+import Gradient from "javascript-color-gradient";
 
-const GameTile = ({ row, column, value, placeMines }) => {
+const GameTile = ({ row, column, value, startGame }) => {
   const [uncover, setUncover] = useState(false);
 
   const colorGradient = new Gradient;
@@ -12,7 +12,7 @@ const GameTile = ({ row, column, value, placeMines }) => {
   const colorArray = colorGradient.getArray();
 
   const tileClickHandler = () => {
-    placeMines({ row, column });
+    startGame({ row, column });
     setUncover(true);
   };
 
@@ -20,28 +20,24 @@ const GameTile = ({ row, column, value, placeMines }) => {
   let cursorStyles;
   let valueClass;
 
-  const determineValueStyles = (value) => {
-    return { color: colorArray[value - 1] }
-  }
+  const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
 
   if (!uncover) {
     cursorStyles = { cursor: "pointer" };
   }
 
   if (uncover) {
-    valueStyles = determineValueStyles(value)
+    valueStyles = determineValueStyles(value);
     switch (value) {
-      case 0: valueClass = "empty"
+      case 0: valueClass = "empty";
         break;
-      case "*": valueClass = "bomb"
+      case "*": valueClass = "bomb";
         break;
-      case "flag": valueClass = "flag"
+      case "flag": valueClass = "flag";
         break;
-      default: valueClass = "number"
+      default: valueClass = "number";
     }
   }
-
-
 
   return (
     <div
@@ -53,7 +49,7 @@ const GameTile = ({ row, column, value, placeMines }) => {
         {!uncover || value}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default GameTile;
