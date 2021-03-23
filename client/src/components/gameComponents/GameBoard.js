@@ -25,6 +25,7 @@ const GameBoard = ({startTimer}) => {
         column={cell.column}
         value={cell.value}
         startGame={startGame}
+        cell={cell}
       />
     )
   });

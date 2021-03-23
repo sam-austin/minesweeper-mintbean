@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Gradient from "javascript-color-gradient";
 
-const GameTile = ({ row, column, value, startGame }) => {
+const GameTile = ({ row, column, value, startGame, cell}) => {
   const [uncover, setUncover] = useState(false);
 
   const colorGradient = new Gradient;
@@ -14,6 +14,7 @@ const GameTile = ({ row, column, value, startGame }) => {
   const tileClickHandler = () => {
     startGame({ row, column });
     setUncover(true);
+    cell.uncover();
   };
 
   let valueStyles;
