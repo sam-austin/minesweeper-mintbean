@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Gradient from "javascript-color-gradient";
 
-const GameTile = ({ row, column, value, startGame, cell}) => {
+const GameTile = ({ row, column, value, startGame, cell }) => {
   const [uncover, setUncover] = useState(false);
 
   const colorGradient = new Gradient;
@@ -20,6 +20,7 @@ const GameTile = ({ row, column, value, startGame, cell}) => {
   let valueStyles;
   let cursorStyles;
   let valueClass;
+  let tileDisplay;
 
   const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
 
@@ -40,14 +41,26 @@ const GameTile = ({ row, column, value, startGame, cell}) => {
     }
   }
 
+  if (valueClass) {
+    switch (valueClass) {
+      case "empty": tileDisplay = "";
+        break;
+      case "bomb": tileDisplay = "bIcon"
+        break;
+      case "flag": tileDisplay = "fIcon"
+        break;
+      default: tileDisplay = value
+    }
+  }
+
   return (
     <div
       className={`game-tile ${valueClass}`}
       style={cursorStyles}
-      onClick={tileClickHandler} 
+      onClick={tileClickHandler}
     >
       <div className="tile-display" style={valueStyles}>
-        {!uncover || value}
+        {tileDisplay}
       </div>
     </div>
   );
