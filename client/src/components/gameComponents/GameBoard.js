@@ -1,19 +1,39 @@
 import React, { useState } from "react"
 import GameTile from "./GameTile"
-import Grid from "../../gameLogic/Grid"
 
-const GameBoard = (props) => {
+
+const GameBoard = ({ grid }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const grid = new Grid(8, 8, 9);
+  const [playState, setPlayState] = useState("playing")
   const [tilesData, setTilesData] = useState(grid.cells);
 
-  const placeMines = (cell) => {
-    if (firstClick) {
-      grid.setMines(cell);
-      grid.setProximityNumbers();
-      setTilesData(grid.cells);
+  const determineResult = (value) => {
+    if (value === "*") {
+      setPlayState("lose")
     }
-    setFirstClick(false);
+    const uncoveredTotal = tilesData.filter(cell => cell.uncovered).length
+    if (uncoveredTotal === tilesData.length - 9) {
+      setPlayState("win")
+    }
+  }
+
+  const handleTileClick = (row, column) => {
+    grid.uncoverClickedCell(row, column)
+    if (firstClick) {
+      startGame({ row, column })
+    }
+    setTilesData(grid.cells)
+  }
+
+  if (playState === "win" || playState === "lose") {
+    grid.uncoverAllCells()
+    setTilesData(grid.cells)
+  }
+
+  const startGame = (cell) => {
+    grid.setMines(cell);
+    grid.setProximityNumbers();
+    if (firstClick) setFirstClick(false);
   };
 
   const tiles = tilesData.map((cell, index) => {
@@ -23,7 +43,10 @@ const GameBoard = (props) => {
         row={cell.row}
         column={cell.column}
         value={cell.value}
-        placeMines={placeMines}
+        uncovered={cell.uncovered}
+        playState={playState}
+        determineResult={determineResult}
+        handleTileClick={handleTileClick}
       />
     )
   });
