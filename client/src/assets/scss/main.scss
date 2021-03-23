@@ -1,7 +1,7 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
-@import 'antd/dist/antd.css';
+@import "antd/dist/antd.css";
 
 // place global css here
 *,
@@ -29,23 +29,23 @@
 }
 
 .landing-text {
-  line-height: .84;
+  line-height: 0.84;
   padding-top: 10vh;
 }
 
 .landing-title {
-  font: 700 15px/1 sofia-pro,sans-serif;
+  font: 700 15px/1 sofia-pro, sans-serif;
   // color: #365ca3;
   color: teal;
   letter-spacing: -4px;
   font-size: 62px;
   align-items: top;
   margin: 0 auto 15px;
-  line-height: .84;
+  line-height: 0.84;
 }
 
 .landing-subheader {
-  font-family: sofia-pro,sans-serif;
+  font-family: sofia-pro, sans-serif;
   font-size: 20px;
   color: #08142c;
   align-items: center;
@@ -71,7 +71,7 @@
 }
 
 .subsection-title {
-  font: 600 15px/1 sofia-pro,sans-serif;
+  font: 600 15px/1 sofia-pro, sans-serif;
   color: teal;
   letter-spacing: -3px;
   font-size: 40px;
@@ -99,8 +99,17 @@
   border: 1px solid black;
 }
 
+.empty {
+  background-color: white;
+  color: white;
+}
+
+.tile-display {
+  padding-top: 0.8rem;
+}
+
 .game-board {
-  width: 202px;
+  width: 402px;
   display: flex;
   flex-wrap: wrap;
   margin: 20px auto;
