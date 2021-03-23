@@ -54,16 +54,20 @@ class Grid {
     ];
 
     return this.cells.filter((cell) => {
-      const adjacentCells = adjacentPositions.some(
+      const isAdjacent = adjacentPositions.some(
         (pos) => cell.row == pos.row && cell.column == pos.column
       );
-      return (adjacentCells && cell.uncovered);
+      if (isAdjacent && !cell.uncovered) {
+        return cell;
+      }
     });
   }
 
   chainUncover(clickedCell) {
     const adjacentCells = this.getAdjacentCells(clickedCell);
-
+    if (adjacentCells.length === 0) {
+      return;
+    }
     adjacentCells.forEach((cell) => {
       cell.uncover();
       if (cell.value === 0) {

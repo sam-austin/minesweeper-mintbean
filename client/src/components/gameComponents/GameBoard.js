@@ -7,6 +7,11 @@ const GameBoard = ({startTimer}) => {
   const grid = new Grid(8, 8, 9);
   const [tilesData, setTilesData] = useState(grid.cells);
 
+  const chainUncoverWrapper = (cell) => {
+    grid.chainUncover(cell);
+    setTilesData(grid.cells);
+  };
+
   const startGame = (cell) => {
     if (firstClick) {
       grid.setMines(cell);
@@ -26,6 +31,7 @@ const GameBoard = ({startTimer}) => {
         value={cell.value}
         startGame={startGame}
         cell={cell}
+        chainUncover={chainUncoverWrapper}
       />
     )
   });

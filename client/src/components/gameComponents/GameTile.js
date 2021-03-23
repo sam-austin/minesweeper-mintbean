@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Gradient from "javascript-color-gradient";
 
-const GameTile = ({ row, column, value, startGame, cell}) => {
+const GameTile = ({ row, column, value, startGame, cell, chainUncover}) => {
   const [uncover, setUncover] = useState(false);
-
+  
   const colorGradient = new Gradient;
   const color1 = "#008000";
   const color2 = "#FF0000";
@@ -14,7 +14,12 @@ const GameTile = ({ row, column, value, startGame, cell}) => {
   const tileClickHandler = () => {
     startGame({ row, column });
     setUncover(true);
-    cell.uncover();
+    if (cell.value === 0) {
+      console.log(cell)
+      chainUncover(cell);
+    } else {
+      cell.uncover();
+    }
   };
 
   let valueStyles;
@@ -22,6 +27,12 @@ const GameTile = ({ row, column, value, startGame, cell}) => {
   let valueClass;
 
   const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
+
+  useEffect(() => {
+    if (cell.uncovered) {
+      setUncover(true);
+    }
+  }, [cell.uncovered]);
 
   if (!uncover) {
     cursorStyles = { cursor: "pointer" };
