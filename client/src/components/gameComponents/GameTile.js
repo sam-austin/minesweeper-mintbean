@@ -8,7 +8,7 @@ const GameTile = ({ row, column, value, placeMines }) => {
   const color1 = "#008000";
   const color2 = "#FF0000";
   colorGradient.setMidpoint(3) //this will eventually be set to the mineCount, to have a number of different colors equal to the mines gradually moving from blue to red. 
-  colorGradient.setGradient(color1, color2)
+  colorGradient.setGradient(color1, color2);
   const colorArray = colorGradient.getArray();
 
   const tileClickHandler = () => {
@@ -47,11 +47,12 @@ const GameTile = ({ row, column, value, placeMines }) => {
     <div
       className={`game-tile ${valueClass}`}
       style={cursorStyles}
-      onClick={tileClickHandler} >
+      onClick={tileClickHandler} 
+    >
       <div className="tile-display" style={valueStyles}>
         {!uncover || value}
       </div>
-    </div >
+    </div>
   )
 }
 

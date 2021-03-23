@@ -22,11 +22,11 @@ class Grid {
     const randomIndex = Math.floor(Math.random() * this.cells.length);
     return this.cells[randomIndex];
   }
+
   // FIXME: prevent mines from being clumped together
-  // FIXME: mine can't be placed in any cell adjacent to initial cell either.
 
   setMines(initialCell) {
-    const adjacentCells = this.getAdjacentCells(initialCell)
+    const adjacentCells = this.getAdjacentCells(initialCell);
     let i = 0;
     while (i < this.mineCount) {
       const randomCell = this.getRandomCell();
