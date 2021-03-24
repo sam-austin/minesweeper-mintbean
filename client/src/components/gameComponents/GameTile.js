@@ -25,10 +25,6 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover, determine
   let valueStyles;
   let cursorStyles;
 
-  const onTileClick = () => {
-    handleTileClick(row, column)
-  }
-
   const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
 
   useEffect(() => {
@@ -37,7 +33,7 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover, determine
     }
   }, [cell.uncovered]);
 
-  if (!uncovered) {
+  if (!uncover) {
     cursorStyles = { cursor: "pointer" };
   }
 
@@ -52,7 +48,7 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover, determine
         break;
       default: valueClass = "number";
     }
-    determineResult(value)
+    // determineResult(value)
   }
 
   return (
@@ -62,7 +58,7 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover, determine
       onClick={tileClickHandler}
     >
       <div className="tile-display" style={valueStyles}>
-        {!uncovered || value}
+        {!uncover || value}
       </div>
     </div>
   );

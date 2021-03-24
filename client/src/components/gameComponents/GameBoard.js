@@ -20,6 +20,7 @@ const GameBoard = ({ startTimer }) => {
       setTilesData(grid.cells);
       startTimer();
     }
+    setFirstClick(false);
   }
 
   const determineResult = (value) => {
@@ -32,24 +33,10 @@ const GameBoard = ({ startTimer }) => {
     }
   }
 
-  const handleTileClick = (row, column) => {
-    grid.uncoverClickedCell(row, column)
-    if (firstClick) {
-      startGame({ row, column })
-    }
-    setTilesData(grid.cells)
-  }
-
   if (playState === "win") {
     grid.uncoverAllCells()
     setTilesData(grid.cells)
   }
-
-  const startGame = (cell) => {
-    grid.setMines(cell);
-    grid.setProximityNumbers();
-    if (firstClick) setFirstClick(false);
-  };
 
   const tiles = tilesData.map((cell, index) => {
     return (
