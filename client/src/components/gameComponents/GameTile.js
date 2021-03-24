@@ -10,9 +10,9 @@ const GameTile = ({ startGame, cell, chainUncover, interactable, updateTileClick
         endGame("loss");
       } else {
         cell.uncover();
+        checkForWin();
       }
       updateTileClickCount();
-      checkForWin();
     }
   };
 

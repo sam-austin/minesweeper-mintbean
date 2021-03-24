@@ -6,7 +6,8 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
   const [firstClick, setFirstClick] = useState(true);
   const [grid, setGrid] = useState(new Grid(18, 14, 5));
   const [tilesData, setTilesData] = useState(grid.cells);
-  const [interactable, setInteractable] = useState(true)
+  const [interactable, setInteractable] = useState(true);
+
   // added to force a re-render of all tiles after each time the chainUncover function is called.
   const [tileClickCount, setTileClickCount] = useState(0);
   const updateTileClickCount = () => {
@@ -71,9 +72,11 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
   });
 
   return (
-    <div className="game-board">
-      {tiles}
-      <button onClick={resetBoard}>Reset</button>
+    <div>
+      <button className="new-game-button" type="button" onClick={resetBoard}>New Game</button>
+      <div className="game-board">
+        {tiles}
+      </div>
     </div>
   );
 };

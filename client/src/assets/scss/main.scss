@@ -181,3 +181,19 @@
   font-weight: 650;
   color: #ea4c4c
 }
+
+.new-game-button {
+  border: 3px solid #545037;
+  border-radius: 10px;
+  font-size: 30px;
+  font-weight: 650;
+  padding: 5px;
+  display: flex;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.new-game-button:hover {
+  background-color: gray;
+  color: white;
+}
