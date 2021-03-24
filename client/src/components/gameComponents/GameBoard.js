@@ -30,9 +30,11 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
   }
 
   const resetBoard = () => {
-    const newGrid = new Grid(18, 14, 40)
-    setPlayState("playing")
-    setTilesData(newGrid.cells)
+    const newGrid = new Grid(18, 14, 40);
+    setGrid(newGrid);
+    setPlayState("playing");
+    setFirstClick(true);
+    setTilesData(newGrid.cells);
   }
 
   const uncoveredCount = tilesData.filter(cell => cell.uncovered).length

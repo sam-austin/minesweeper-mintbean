@@ -2,12 +2,10 @@ import React, { useState } from "react";
 
 
 const GameTile = ({ row, column, value, startGame, determineResult, cell, chainUncover, playState, updateEmptyTileClickCount }) => {
-  const [uncover, setUncover] = useState(false);
 
   const tileClickHandler = () => {
     if (playState === "playing") {
       startGame({ row, column });
-      setUncover(true);
       if (cell.value === 0) {
         chainUncover(cell);
       } else {
@@ -18,10 +16,6 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
     }
   };
 
-  if (cell.uncovered && !uncover) {
-    setUncover(true);
-  }
-
   const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
   const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
 
@@ -29,11 +23,11 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
   let valueStyles;
   let cursorStyles;
 
-  if (!uncover && playState === "playing") {
+  if (!cell.uncovered && playState === "playing") {
     cursorStyles = { cursor: "pointer" };
   }
 
-  if (uncover) {
+  if (cell.uncovered) {
     valueStyles = determineValueStyles(value);
     switch (value) {
       case 0: valueClass = "empty";
@@ -53,7 +47,7 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
       onClick={tileClickHandler}
     >
       <div className="tile-display" style={valueStyles}>
-        {!uncover || value}
+        {cell.uncovered? value : null}
       </div>
     </div>
   );
