@@ -1,10 +1,14 @@
-import React from "react"
-import { Button, notification, Icon } from 'antd';
+import React from "react";
+import { Button, notification, Icon } from "antd";
 
 const openLossNotification = (resetBoard) => {
   const key = `open${Date.now()}`;
   const btn = (
-    <Button type="primary" size="small" onClick={() => resetBoard()}>
+    <Button type="primary" size="small" onClick={() => {
+        resetBoard()
+        notification.close(key)
+      }}
+    >
       Play Again?
     </Button>
   );
@@ -19,5 +23,4 @@ const openLossNotification = (resetBoard) => {
   });
 };
 
-
-export default openLossNotification
+export default openLossNotification;

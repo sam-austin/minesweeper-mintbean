@@ -2,26 +2,30 @@
 
 ### Must
 
-- DEPLOY!!!
+- change uncover all to uncover mines/streamline win/lose logic. —Tom
 
-- Insert bomb and flag icons.
+- Pop up instructions and win/lose message. —Tom&Sam
 
-- Create win state: all mines flagged === board state freezes, time score saved, victory/play again message; create lose state: mine tripped === board state freezes, defeat/play again message.
+- Reset Button —Maeghan 
 
-- Game rules/ help popover 
+- Landing page content Tom&Sam
 
 - Tom extra phrase
 
-- spread out mines better
+- ReadMe 
 
-- ReadMe
+- add nvmrc file
 
 ### Would be nice
 
-- Set difficulty level dropdown menu
+- pause button
 
-- update game board to have class name based on board size chosen (small, medium, large) and adjust CSS width based on number of columns 
+- Set difficulty level dropdown menu (update game board to have class name based on board size chosen (small, medium, large) and adjust CSS width based on number of columns)
+
+- Style game feel. 
 
 - Create flag toggle.
 
 - Save score data
+
+- spread out mines better

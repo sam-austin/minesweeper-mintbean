@@ -5,7 +5,11 @@ import { Button, notification } from 'antd';
 const openWinNotification = (resetBoard) => {
   const key = `open${Date.now()}`;
   const btn = (
-    <Button type="primary" size="small" onClick={() => notification.close(key)}>
+    <Button type="primary" size="small" onClick={() => {
+        resetBoard();
+        notification.close(key);
+      }}
+    >
       Play Again?
     </Button>
   );
