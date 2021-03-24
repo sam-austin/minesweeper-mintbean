@@ -4,7 +4,7 @@ import Grid from "../../gameLogic/Grid";
 
 const GameBoard = ({startTimer}) => {
   const [firstClick, setFirstClick] = useState(true);
-  const grid = new Grid(8, 8, 9);
+  const [grid, setGrid] = useState(new Grid(9, 9, 10));
   const [tilesData, setTilesData] = useState(grid.cells);
 
   const chainUncoverWrapper = (cell) => {
