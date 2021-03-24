@@ -1,16 +1,18 @@
 import React from "react";
 
-const GameTile = ({ startGame, determineResult, cell, chainUncover, playState, updateEmptyTileClickCount }) => {
+const GameTile = ({ startGame, cell, chainUncover, interactable, updateTileClickCount, endGame, checkForWin }) => {
   const tileClickHandler = () => {
-    if (playState === "playing") {
+    if (interactable) {
       startGame({ row: cell.row, column: cell.column });
       if (cell.value === 0) {
         chainUncover(cell);
+      } else if (cell.value === "*") {
+        endGame("loss");
       } else {
         cell.uncover();
       }
-      determineResult(cell.value);
-      updateEmptyTileClickCount();
+      updateTileClickCount();
+      checkForWin();
     }
   };
 
@@ -21,7 +23,7 @@ const GameTile = ({ startGame, determineResult, cell, chainUncover, playState, u
   let styles;
   let icon = cell.value;
 
-  if (!cell.uncovered && playState === "playing") {
+  if (!cell.uncovered && interactable) {
     styles = { cursor: "pointer" };
   }
 
@@ -39,7 +41,6 @@ const GameTile = ({ startGame, determineResult, cell, chainUncover, playState, u
         break;
       default: valueClass = "number";
     }
-    determineResult(cell.value);
   }
 
   return (
