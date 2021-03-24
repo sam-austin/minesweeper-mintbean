@@ -119,8 +119,17 @@
   padding: 8px;
 }
 
+.game-tile.empty {
+  background-color: white;
+}
+
+.game-tile.number {
+  background-color: white;
+}
+
 .game-tile.bomb {
   padding: 0;
+  background-color: #cc4b37;
 }
 
 .game-board {

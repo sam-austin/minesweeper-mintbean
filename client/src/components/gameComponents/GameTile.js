@@ -1,33 +1,33 @@
 import React from "react";
 
-const GameTile = ({ row, column, value, startGame, determineResult, cell, chainUncover, playState, updateEmptyTileClickCount }) => {
+const GameTile = ({ startGame, determineResult, cell, chainUncover, playState, updateEmptyTileClickCount }) => {
   const tileClickHandler = () => {
     if (playState === "playing") {
-      startGame({ row, column });
+      startGame({ row: cell.row, column: cell.column });
       if (cell.value === 0) {
         chainUncover(cell);
       } else {
         cell.uncover();
       }
-      determineResult(value);
+      determineResult(cell.value);
       updateEmptyTileClickCount();
     }
   };
 
   const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
-  const determineValueStyles = (val) => ({ color: colorArray[val - 1], backgroundColor: "white" });
+  const determineValueStyles = (val) => ({ color: colorArray[val - 1]});
 
   let valueClass;
   let styles;
-  let icon = value;
+  let icon = cell.value;
 
   if (!cell.uncovered && playState === "playing") {
     styles = { cursor: "pointer" };
   }
 
   if (cell.uncovered) {
-    styles = determineValueStyles(value);
-    switch (value) {
+    styles = determineValueStyles(cell.value);
+    switch (cell.value) {
       case 0: valueClass = "empty";
         icon = "";
         break;
@@ -39,7 +39,7 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
         break;
       default: valueClass = "number";
     }
-    determineResult(value);
+    determineResult(cell.value);
   }
 
   return (

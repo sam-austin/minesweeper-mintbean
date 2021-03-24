@@ -64,9 +64,6 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
     return (
       <GameTile
         key={index}
-        row={cell.row}
-        column={cell.column}
-        value={cell.value}
         startGame={startGame}
         cell={cell}
         determineResult={determineResult}
