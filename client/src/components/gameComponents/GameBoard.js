@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import GameTile from "./GameTile";
 import Grid from "../../gameLogic/Grid";
 
-const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) => {
+const GameBoard = ({ startTimer, stopTimer, openWinNotification, openLossNotification }) => {
   const [firstClick, setFirstClick] = useState(true);
   const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
-  const [playState, setPlayState] = useState("playing")
+  const [interactable, setInteractable] = useState(true);
+  const [paused, setPaused] = useState("Pause");
 
   // added to force a re-render of all tiles after each time the chainUncover function is called.
   const [emptyTileClickCount, setEmptyTileClickCount] = useState(0);
@@ -31,7 +32,7 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
 
   const resetBoard = () => {
     const newGrid = new Grid(18, 14, 40)
-    setPlayState("playing")
+    setInteractable(true)
     setTilesData(newGrid.cells)
   }
 
@@ -41,21 +42,17 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
     if (value === "*") {
       grid.uncoverAllMines()
       setTilesData(grid.cells)
-      setPlayState("loss")
+      setInteractable(false)
+      stopTimer()
+      openLossNotification(resetBoard)
     }
-    if (uncoveredCount === tilesData.length - 40 && playState !== "win") {
+    if (uncoveredCount === tilesData.length - 40 && interactable) {
       grid.uncoverAllMines()
       setTilesData(grid.cells)
-      setPlayState("win")
+      setInteractable(false)
+      stopTimer()
+      openWinNotification(resetBoard)
     }
-  }
-
-  if (playState === "win") {
-    openWinNotification(resetBoard)
-  }
-
-  if (playState === "loss") {
-    openLossNotification(resetBoard)
   }
 
   const tiles = tilesData.map((cell, index) => {
@@ -69,16 +66,28 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
         cell={cell}
         determineResult={determineResult}
         chainUncover={chainUncoverWrapper}
-        playState={playState}
+        interactable={interactable}
         updateEmptyTileClickCount={updateEmptyTileClickCount}
       />
     )
   });
 
+  const pauseHandler = () => {
+    if (interactable) {
+      stopTimer()
+      setInteractable(false)
+      setPaused("Play")
+    } else if (paused === "Play") {
+      startTimer()
+      setInteractable(true)
+      setPaused("Pause")
+    }
+  }
+
   return (
     <div className="game-board">
       {tiles}
-      <button onClick={resetBoard}>Reset</button>
+      <button onClick={pauseHandler}>{paused}</button>
     </div>
   );
 };

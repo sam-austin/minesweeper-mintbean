@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 
-const GameTile = ({ row, column, value, startGame, determineResult, cell, chainUncover, playState, updateEmptyTileClickCount }) => {
+const GameTile = ({ row, column, value, startGame, determineResult, cell, chainUncover, interactable, updateEmptyTileClickCount }) => {
   const [uncover, setUncover] = useState(false);
 
   const tileClickHandler = () => {
-    if (playState === "playing") {
+    if (interactable) {
       startGame({ row, column });
       setUncover(true);
       if (cell.value === 0) {
@@ -29,7 +29,7 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
   let valueStyles;
   let cursorStyles;
 
-  if (!uncover && playState === "playing") {
+  if (!uncover && interactable) {
     cursorStyles = { cursor: "pointer" };
   }
 

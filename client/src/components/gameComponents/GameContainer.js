@@ -16,6 +16,10 @@ const GameContainer = () => {
     setStarted(true);
   };
 
+  const stopTimer = () => {
+    setStarted(false);
+  }
+
   const showModal = () => {
     setModalVisible(true);
   }
@@ -29,7 +33,7 @@ const GameContainer = () => {
       <Header></Header>
       <div className="game-container grid-container">
         <Timer started={started} />
-        <GameBoard startTimer={startTimer} openWinNotification={openWinNotification} openLossNotification={openLossNotification} />
+        <GameBoard startTimer={startTimer} stopTimer={stopTimer} openWinNotification={openWinNotification} openLossNotification={openLossNotification} />
         <HowToPlayModal modalVisible={modalVisible} handleCancel={handleCancel} />
       </div>
       <button onClick={showModal}>Show Modal</button>

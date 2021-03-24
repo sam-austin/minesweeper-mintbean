@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 
-const Timer = ({started}) => {
+const Timer = ({ started }) => {
   const [num, setNum] = useState(0);
   const increaseNum = () => setNum((prev) => prev + 1);
   const intervalRef = useRef();
@@ -14,6 +14,10 @@ const Timer = ({started}) => {
     intervalRef.current = setInterval(increaseNum, 1000);
     return () => clearInterval(intervalRef.current);
   }, [started]);
+
+  if (!started) {
+    clearInterval(intervalRef.current)
+  }
 
   const pad = (val) => {
     const valString = val.toString();
