@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-const GameTile = ({ row, column, value, startGame, cell, chainUncover, playState, updateEmptyTileClickCount }) => {
+const GameTile = ({ row, column, value, startGame, determineResult, cell, chainUncover, playState, updateEmptyTileClickCount }) => {
   const [uncover, setUncover] = useState(false);
 
   const tileClickHandler = () => {
