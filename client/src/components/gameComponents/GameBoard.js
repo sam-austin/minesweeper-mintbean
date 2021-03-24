@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import GameTile from "./GameTile";
 import Grid from "../../gameLogic/Grid";
 
-const GameBoard = ({startTimer}) => {
+const GameBoard = ({ startTimer }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const [grid, setGrid] = useState(new Grid(9, 9, 10));
+  const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
 
   const chainUncoverWrapper = (cell) => {

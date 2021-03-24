@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Gradient from "javascript-color-gradient";
 
-const GameTile = ({ row, column, value, startGame, cell, chainUncover}) => {
+const GameTile = ({ row, column, value, startGame, cell, chainUncover }) => {
   const [uncover, setUncover] = useState(false);
-  
+
   const colorGradient = new Gradient;
   const color1 = "#008000";
   const color2 = "#FF0000";
@@ -15,7 +15,6 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover}) => {
     startGame({ row, column });
     setUncover(true);
     if (cell.value === 0) {
-      console.log(cell)
       chainUncover(cell);
     } else {
       cell.uncover();
@@ -55,7 +54,7 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover}) => {
     <div
       className={`game-tile ${valueClass}`}
       style={cursorStyles}
-      onClick={tileClickHandler} 
+      onClick={tileClickHandler}
     >
       <div className="tile-display" style={valueStyles}>
         {!uncover || value}
