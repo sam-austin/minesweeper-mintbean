@@ -7,7 +7,7 @@ const GameBoard = ({ startTimer }) => {
   const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
   const [playState, setPlayState] = useState("playing")
-  
+
   const chainUncoverWrapper = (cell) => {
     grid.chainUncover(cell);
     setTilesData(grid.cells);
@@ -19,6 +19,8 @@ const GameBoard = ({ startTimer }) => {
       grid.setProximityNumbers();
       setTilesData(grid.cells);
       startTimer();
+    }
+  }
 
   const determineResult = (value) => {
     if (value === "*") {
@@ -58,6 +60,7 @@ const GameBoard = ({ startTimer }) => {
         value={cell.value}
         startGame={startGame}
         cell={cell}
+        determineResult={determineResult}
         chainUncover={chainUncoverWrapper}
       />
     )
