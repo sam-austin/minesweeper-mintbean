@@ -7,7 +7,7 @@ const TopBar = props => {
   
   return (
     <Header className='header' style={{ position: 'fixed', zIndex: 1, width: '100%', backgroundColor: 'white', borderBottom: '3px', padding: 0}}>
-      <Menu mode="horizontal" style={{fontSize: "16px", border: 0, padding: '0 100px'}}>
+      <Menu mode="horizontal" style={{fontSize: "16px", border: 0, padding: '0 50px'}}>
         <Menu.Item disabled key="1" style={{float: "left"}}>
           <img className="bomb-icon" alt="bomb" src="https://around-the-block.s3.amazonaws.com/bomb-header.png" />
         </Menu.Item>

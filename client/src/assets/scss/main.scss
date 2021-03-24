@@ -21,9 +21,9 @@
 
 .landing-page-top {
   background-image: url(https://around-the-block.s3.amazonaws.com/demining.jpg);
-  background-position: center center fixed;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   min-height: 579px;
   z-index: 2;
 }
@@ -35,7 +35,6 @@
 
 .landing-title {
   font: 700 15px/1 sofia-pro, sans-serif;
-  // color: #365ca3;
   color: teal;
   letter-spacing: -4px;
   font-size: 62px;
@@ -91,25 +90,37 @@
   align-self: center;
 }
 
+.developers-section-container {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-bottom: 50px;
+}
+
+.dev-card {
+  width: 270px;
+  height: auto;
+  border-radius: 15px;
+}
+
+.developers-section-container img {
+  margin: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
 // game board grid layout
 .game-tile {
   width: 40px;
   height: 40px;
   background-color: rgb(173, 247, 247);
   border: 2px solid black;
+  margin: auto;
+  padding: 8px;
 }
 
-.empty {
-  background-color: white;
-  color: white;
-}
-
-.number {
-  background-color: white;
-}
-
-.tile-display {
-  padding-top: 0.8rem;
+.game-tile.bomb {
+  padding: 0;
 }
 
 .game-board {
@@ -118,6 +129,11 @@
   flex-wrap: wrap;
   margin: 20px auto;
   border: 2px solid black;
+}
+
+.modal-container {
+  justify-content: center;
+  text-align: center;
 }
 
 // game-container layout
