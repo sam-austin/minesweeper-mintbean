@@ -28,14 +28,17 @@ const GameBoard = ({ startTimer }) => {
       setPlayState("lose")
     }
     const uncoveredTotal = tilesData.filter(cell => cell.uncovered).length
-    if (uncoveredTotal === tilesData.length - 40) {
+    if (uncoveredTotal === tilesData.length - 3 && playState !== "win") {
       setPlayState("win")
     }
   }
 
   if (playState === "win") {
-    grid.uncoverAllCells()
-    setTilesData(grid.cells)
+    const uncoveredTotal = tilesData.filter(cell => cell.uncovered).length
+    if (uncoveredTotal !== grid.cells.length) {
+      grid.uncoverAllCells()
+      setTilesData(grid.cells)
+    }
   }
 
   const tiles = tilesData.map((cell, index) => {
@@ -49,6 +52,7 @@ const GameBoard = ({ startTimer }) => {
         cell={cell}
         determineResult={determineResult}
         chainUncover={chainUncoverWrapper}
+        playState={playState}
       />
     )
   });
