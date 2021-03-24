@@ -6,7 +6,7 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
   const [firstClick, setFirstClick] = useState(true);
   const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
-  const [playState, setPlayState] = useState("playing")
+  const [playState, setPlayState] = useState("playing");
 
   // added to force a re-render of all tiles after each time the chainUncover function is called.
   const [emptyTileClickCount, setEmptyTileClickCount] = useState(0);
@@ -27,7 +27,7 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
       startTimer();
     }
     setFirstClick(false);
-  }
+  };
 
   const resetBoard = () => {
     const newGrid = new Grid(18, 14, 40);
@@ -35,29 +35,29 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) =>
     setPlayState("playing");
     setFirstClick(true);
     setTilesData(newGrid.cells);
-  }
+  };
 
-  const uncoveredCount = tilesData.filter(cell => cell.uncovered).length
+  const uncoveredCount = tilesData.filter(cell => cell.uncovered).length;
 
   const determineResult = (value) => {
     if (value === "*") {
-      grid.uncoverAllMines()
-      setTilesData(grid.cells)
-      setPlayState("loss")
+      grid.uncoverAllMines();
+      setTilesData(grid.cells);
+      setPlayState("loss");
     }
     if (uncoveredCount === tilesData.length - 40 && playState !== "win") {
-      grid.uncoverAllMines()
-      setTilesData(grid.cells)
-      setPlayState("win")
+      grid.uncoverAllMines();
+      setTilesData(grid.cells);
+      setPlayState("win");
     }
-  }
+  };
 
   if (playState === "win") {
-    openWinNotification(resetBoard)
+    openWinNotification(resetBoard);
   }
 
   if (playState === "loss") {
-    openLossNotification(resetBoard)
+    openLossNotification(resetBoard);
   }
 
   const tiles = tilesData.map((cell, index) => {
