@@ -5,7 +5,7 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
   const [uncover, setUncover] = useState(false);
 
   const tileClickHandler = () => {
-    if (playState) {
+    if (playState === "playing") {
       startGame({ row, column });
       setUncover(true);
       if (cell.value === 0) {
@@ -13,6 +13,7 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
       } else {
         cell.uncover();
       }
+      determineResult(value)
       updateEmptyTileClickCount()
     }
   };
@@ -28,7 +29,7 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
   let valueStyles;
   let cursorStyles;
 
-  if (!uncover && playState) {
+  if (!uncover && playState === "playing") {
     cursorStyles = { cursor: "pointer" };
   }
 
@@ -43,7 +44,6 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
         break;
       default: valueClass = "number";
     }
-    determineResult(value)
   }
 
   return (
