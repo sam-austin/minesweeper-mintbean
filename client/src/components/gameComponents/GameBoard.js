@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import GameTile from "./GameTile";
 import Grid from "../../gameLogic/Grid";
 
-const GameBoard = ({ startTimer }) => {
+const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const [grid, setGrid] = useState(new Grid(18, 14, 40));
+  const [grid, setGrid] = useState(new Grid(18, 14, 5));
   const [tilesData, setTilesData] = useState(grid.cells);
-  const [playState, setPlayState] = useState("playing")
+  const [interactable, setInteractable] = useState(true);
 
   // added to force a re-render of all tiles after each time the chainUncover function is called.
-  const [emptyTileClickCount, setEmptyTileClickCount] = useState(0);
-  const updateEmptyTileClickCount = () => {
-    setEmptyTileClickCount(emptyTileClickCount + 1);
+  const [tileClickCount, setTileClickCount] = useState(0);
+  const updateTileClickCount = () => {
+    setTileClickCount(tileClickCount + 1);
   };
 
   const chainUncoverWrapper = (cell) => {
@@ -27,46 +27,56 @@ const GameBoard = ({ startTimer }) => {
       startTimer();
     }
     setFirstClick(false);
-  }
+  };
 
-  const determineResult = (value) => {
-    if (value === "*") {
-      setPlayState("lose")
-    }
-    const uncoveredTotal = tilesData.filter(cell => cell.uncovered).length
-    if (uncoveredTotal === tilesData.length - 3 && playState !== "win") {
-      setPlayState("win")
-    }
-  }
+  const resetBoard = () => {
+    const newGrid = new Grid(18, 14, 40);
+    setGrid(newGrid);
+    setInteractable(true);
+    setFirstClick(true);
+    setTilesData(newGrid.cells);
+  };
 
-  if (playState === "win") {
-    const uncoveredTotal = tilesData.filter(cell => cell.uncovered).length
-    if (uncoveredTotal !== grid.cells.length) {
-      grid.uncoverAllCells()
-      setTilesData(grid.cells)
+  const endGame = (result) => {
+    grid.uncoverAllMines();
+    setTilesData(grid.cells);
+    setInteractable(false);
+
+    if (result === "loss") {
+      openLossNotification(resetBoard);
+    } else if (result === "win") {
+      openWinNotification(resetBoard);
     }
-  }
+  };
+
+  const checkForWin = () => {
+    const uncoveredCount = tilesData.filter((cell) => cell.uncovered).length;
+    if (uncoveredCount === tilesData.length - grid.mineCount) {
+      endGame("win");
+    }
+  };
 
   const tiles = tilesData.map((cell, index) => {
     return (
       <GameTile
         key={index}
-        row={cell.row}
-        column={cell.column}
-        value={cell.value}
         startGame={startGame}
         cell={cell}
-        determineResult={determineResult}
+        endGame={endGame}
+        checkForWin={checkForWin}
         chainUncover={chainUncoverWrapper}
-        playState={playState}
-        updateEmptyTileClickCount={updateEmptyTileClickCount}
+        interactable={interactable}
+        updateTileClickCount={updateTileClickCount}
       />
     )
   });
 
   return (
-    <div className="game-board">
-      {tiles}
+    <div>
+      <button className="new-game-button" type="button" onClick={resetBoard}>New Game</button>
+      <div className="game-board">
+        {tiles}
+      </div>
     </div>
   );
 };

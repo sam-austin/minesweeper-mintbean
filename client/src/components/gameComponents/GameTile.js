@@ -1,40 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 
-
-const GameTile = ({ row, column, value, startGame, determineResult, cell, chainUncover, playState, updateEmptyTileClickCount }) => {
-  const [uncover, setUncover] = useState(false);
-
+const GameTile = ({ startGame, cell, chainUncover, interactable, updateTileClickCount, endGame, checkForWin }) => {
   const tileClickHandler = () => {
-    if (playState === "playing") {
-      startGame({ row, column });
-      setUncover(true);
+    if (interactable) {
+      startGame({ row: cell.row, column: cell.column });
       if (cell.value === 0) {
         chainUncover(cell);
-        updateEmptyTileClickCount()
+      } else if (cell.value === "*") {
+        endGame("loss");
       } else {
         cell.uncover();
+        checkForWin();
       }
+      updateTileClickCount();
     }
   };
-
-  if (cell.uncovered && !uncover) {
-    setUncover(true);
-  }
 
   const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
   const determineValueStyles = (val) => ({ color: colorArray[val - 1], backgroundColor: "#afb51a", fontWeight: 500 });
 
   let valueClass;
   let styles;
-  let icon = value;
+  let icon = cell.value;
 
-  if (!uncover && playState === "playing") {
+  if (!cell.uncovered && interactable) {
     styles = { cursor: "pointer" };
   }
 
-  if (uncover) {
-    styles = determineValueStyles(value);
-    switch (value) {
+  if (cell.uncovered) {
+    styles = determineValueStyles(cell.value);
+    switch (cell.value) {
       case 0: valueClass = "empty";
         icon = "";
         break;
@@ -46,7 +41,6 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
         break;
       default: valueClass = "number";
     }
-    determineResult(value);
   }
 
   return (
@@ -55,7 +49,7 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
       style={styles}
       onClick={tileClickHandler}
     >
-      {!uncover || icon}
+      {cell.uncovered ? icon : null}
     </div>
   );
 };

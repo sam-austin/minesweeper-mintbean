@@ -102,8 +102,12 @@ class Grid {
     clickedCell.uncovered = true;
   }
 
-  uncoverAllCells() {
-    this.cells.forEach(cell => cell.uncovered = true)
+  uncoverAllMines() {
+    this.cells.forEach(cell => {
+      if (cell.value === "*") {
+        cell.uncovered = true
+      }
+    })
   }
 }
 
