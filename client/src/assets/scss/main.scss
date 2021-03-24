@@ -35,7 +35,6 @@
 
 .landing-title {
   font: 700 15px/1 sofia-pro, sans-serif;
-  // color: #365ca3;
   color: teal;
   letter-spacing: -4px;
   font-size: 62px;
@@ -117,7 +116,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 20px auto;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 // game-container layout
@@ -132,4 +131,12 @@
   padding: 5px;
   margin: 10px auto;
   display: flex;
+}
+
+.bomb {
+  background-image: url(https://mine-sweeper-s3.s3.amazonaws.com/mine.svg);
+}
+
+.flag {
+  background-image: url(https://mine-sweeper-s3.s3.amazonaws.com/flags.svg)
 }
