@@ -35,7 +35,7 @@
 
 .landing-title {
   font: 700 15px/1 sofia-pro, sans-serif;
-  color: teal;
+  color: #645f35;
   letter-spacing: -4px;
   font-size: 62px;
   align-items: top;
@@ -62,7 +62,7 @@
 .rounded-button-extra {
   border-radius: 80px;
   padding: 0.7em 1.5em;
-  background-color: green;
+  background-color: #c1c526;
 }
 
 .landing-grid {
@@ -71,7 +71,7 @@
 
 .subsection-title {
   font: 600 15px/1 sofia-pro, sans-serif;
-  color: teal;
+  color: #645f35;
   letter-spacing: -3px;
   font-size: 40px;
 }
@@ -113,23 +113,42 @@
 .game-tile {
   width: 40px;
   height: 40px;
-  background-color: rgb(173, 247, 247);
-  border: 2px solid black;
   margin: auto;
   padding: 8px;
 }
 
-.game-tile.empty {
-  background-color: white;
+.game-tile:nth-of-type(odd) {
+  background-color: #f2cb94;
 }
 
-.game-tile.number {
-  background-color: white;
+.game-tile:nth-of-type(even) {
+  background-color: #dcb37e;
+}
+
+.game-tile:hover {
+  animation: bounce 1s;
+  filter:brightness(85%)
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
 }
 
 .game-tile.bomb {
   padding: 0;
-  background-color: #cc4b37;
 }
 
 .game-board {
@@ -137,7 +156,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 20px auto;
-  border: 2px solid black;
+  border: 2px solid #bc9360;
 }
 
 .modal-container {
@@ -152,9 +171,13 @@
 }
 
 .timer {
-  border: 1px solid black;
+  border: 3px solid #545037;
+  border-radius: 10px;
   width: fit-content;
   padding: 5px;
   margin: 10px auto;
   display: flex;
+  font-size: 30px;
+  font-weight: 650;
+  color: #ea4c4c
 }

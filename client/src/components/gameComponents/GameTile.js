@@ -17,7 +17,7 @@ const GameTile = ({ startGame, cell, chainUncover, interactable, updateTileClick
   };
 
   const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
-  const determineValueStyles = (val) => ({ color: colorArray[val - 1]});
+  const determineValueStyles = (val) => ({ color: colorArray[val - 1], backgroundColor: "#afb51a", fontWeight: 500 });
 
   let valueClass;
   let styles;
