@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Gradient from "javascript-color-gradient";
+import React, { useState } from "react";
 
-const GameTile = ({ row, column, value, startGame, cell, chainUncover, determineResult, playState }) => {
+
+const GameTile = ({ row, column, value, startGame, cell, chainUncover, updateEmptyTileClickCount}) => {
   const [uncover, setUncover] = useState(false);
 
-  const colorGradient = new Gradient;
-  const color1 = "#008000";
-  const color2 = "#FF0000";
-  colorGradient.setMidpoint(3)
-  colorGradient.setGradient(color1, color2);
-  const colorArray = colorGradient.getArray();
-
-  const tileClickHandler = () => {
+   const tileClickHandler = () => {
     if (playState === "playing") {
       startGame({ row, column });
       setUncover(true);
@@ -22,19 +15,18 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover, determine
       }
     }
   };
+  
+  if (cell.uncovered && !uncover) {
+    setUncover(true);
+  }
 
-  let valueClass;
-  let valueStyles;
-  let cursorStyles;
-
+  const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
   const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
 
-  useEffect(() => {
-    if (cell.uncovered) {
-      setUncover(true);
-    }
-  }, [cell.uncovered]);
-
+  let valueClass; 
+  let valueStyles;
+  let cursorStyles;
+  
   if (!uncover && playState === "playing") {
     cursorStyles = { cursor: "pointer" };
   }
