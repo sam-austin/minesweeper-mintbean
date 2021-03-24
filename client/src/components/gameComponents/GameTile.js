@@ -1,27 +1,29 @@
 import React, { useState } from "react";
-import Gradient from "javascript-color-gradient";
 
-const GameTile = ({ row, column, value, startGame, cell}) => {
+const GameTile = ({ row, column, value, startGame, cell, chainUncover, updateEmptyTileClickCount}) => {
   const [uncover, setUncover] = useState(false);
-
-  const colorGradient = new Gradient;
-  const color1 = "#008000";
-  const color2 = "#FF0000";
-  colorGradient.setMidpoint(3) //this will eventually be set to the mineCount, to have a number of different colors equal to the mines gradually moving from blue to red. 
-  colorGradient.setGradient(color1, color2);
-  const colorArray = colorGradient.getArray();
 
   const tileClickHandler = () => {
     startGame({ row, column });
     setUncover(true);
-    cell.uncover();
+
+    if (cell.value === 0) {
+      chainUncover(cell);
+      updateEmptyTileClickCount();
+    } else {
+      cell.uncover();
+    }
   };
 
+  if (cell.uncovered && !uncover) {
+    setUncover(true);
+  }
+
+  const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
+  const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
   let valueStyles;
   let cursorStyles;
   let valueClass;
-
-  const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
 
   if (!uncover) {
     cursorStyles = { cursor: "pointer" };
@@ -44,7 +46,7 @@ const GameTile = ({ row, column, value, startGame, cell}) => {
     <div
       className={`game-tile ${valueClass}`}
       style={cursorStyles}
-      onClick={tileClickHandler} 
+      onClick={tileClickHandler}
     >
       <div className="tile-display" style={valueStyles}>
         {!uncover || value}

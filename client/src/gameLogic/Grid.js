@@ -54,7 +54,25 @@ class Grid {
     ];
 
     return this.cells.filter((cell) => {
-      return adjacentPositions.some((pos) => cell.row == pos.row && cell.column == pos.column);
+      const isAdjacent = adjacentPositions.some(
+        (pos) => cell.row == pos.row && cell.column == pos.column
+      );
+      if (isAdjacent && !cell.uncovered) {
+        return cell;
+      }
+    });
+  }
+
+  chainUncover(clickedCell) {
+    const adjacentCells = this.getAdjacentCells(clickedCell);
+    if (adjacentCells.length === 0) {
+      return;
+    }
+    adjacentCells.forEach((cell) => {
+      cell.uncover();
+      if (cell.value === 0) {
+        this.chainUncover(cell);
+      }
     });
   }
 
