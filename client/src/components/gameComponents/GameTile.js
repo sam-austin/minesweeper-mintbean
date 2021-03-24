@@ -22,7 +22,7 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
   }
 
   const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
-  const determineValueStyles = (val) => ({ color: colorArray[val - 1], backgroundColor: "white"});
+  const determineValueStyles = (val) => ({ color: colorArray[val - 1], backgroundColor: "#afb51a", fontWeight: 500 });
 
   let valueClass;
   let styles;
