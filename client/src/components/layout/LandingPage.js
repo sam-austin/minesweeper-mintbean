@@ -9,18 +9,13 @@ const LandingPage = props => {
 
   return (
     <Layout>
-      <div className="grid-x grid-margin-x landing-grid">
-      <div className="cell medium-1 large-1" />
-      <div className="cell small-12 medium-10 large-10">
+      <div className="grid-x grid-margin-x landing-grid" style={{ justifyContent: "center"}}>
+        <div className="cell small-12 medium-11 large-11">
         <Content style={{ paddingTop: '64px', backgroundColor: 'white'}}>
-          <div className="cell medium-2 large-2" />
             <div className="landing-page-top ">
               <div className="landing-text">
-                <div>
-
-                </div>
                 <h1 className="landing-title">
-                  Avoid the Mines at All Cost!
+                  Avoid the Mines!
                 </h1>
                 <p className="landing-subheader">
                   Click click boom boom
@@ -41,7 +36,6 @@ const LandingPage = props => {
           </Content>
           <FeatureDescriptions />
         </div>
-        <div className="cell medium-1 large-1" />
       </div>
     </Layout>
   );
