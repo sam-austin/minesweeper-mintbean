@@ -42,10 +42,10 @@ const FeatureDescriptions = props => {
                 bordered={false}
                 cover={<img alt="example" src="https://avatars.githubusercontent.com/u/62975710?s=460&u=386ccd63dc2b0ad6fc3c17fc69798844f98098d4&v=4" />}
                 actions={[
-                  <a href="https://github.com/tomlow">
+                  <a href="https://github.com/tomlow" target="_blank">
                     <GithubOutlined key="github" />
                   </a>,
-                  <a href="https://www.linkedin.com/in/tlow/">
+                  <a href="https://www.linkedin.com/in/tlow/" target="_blank">
                     <LinkedinOutlined key="linkedin" />
                   </a>
                 ]}
@@ -60,10 +60,10 @@ const FeatureDescriptions = props => {
                 bordered={false}
                 cover={<img alt="example" src="https://avatars.githubusercontent.com/u/62575735?s=460&v=4" />}
                 actions={[
-                  <a href="https://github.com/maeghanpro">
+                  <a href="https://github.com/maeghanpro" target="_blank">
                     <GithubOutlined key="github" />
                   </a>,
-                  <a href="https://www.linkedin.com/in/maeghan-provencher/">
+                  <a href="https://www.linkedin.com/in/maeghan-provencher/" target="_blank">
                     <LinkedinOutlined key="linkedin" />
                   </a>
                 ]}
@@ -78,10 +78,10 @@ const FeatureDescriptions = props => {
                 bordered={false}
                 cover={<img alt="example" src="https://avatars.githubusercontent.com/u/60296310?s=460&u=fcae51be82a9c8f425ac59f99d2bdfc173068e62&v=4" />}
                 actions={[
-                  <a href="https://github.com/sam-austin">
+                  <a href="https://github.com/sam-austin" target="_blank">
                     <GithubOutlined key="github" />
                   </a>,
-                  <a href="https://www.linkedin.com/in/samson-park/">
+                  <a href="https://www.linkedin.com/in/samson-park/" target="_blank">
                     <LinkedinOutlined key="linkedin" />
                   </a>
                 ]}
