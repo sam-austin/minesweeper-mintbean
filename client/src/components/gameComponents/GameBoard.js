@@ -7,6 +7,12 @@ const GameBoard = ({startTimer}) => {
   const [grid, setGrid] = useState(new Grid(9, 9, 10));
   const [tilesData, setTilesData] = useState(grid.cells);
 
+  // added to force a re-render of all tiles after each time the chainUncover function is called.
+  const [emptyTileClickCount, setEmptyTileClickCount] = useState(0);
+  const updateEmptyTileClickCount = () => {
+    setEmptyTileClickCount(emptyTileClickCount + 1);
+  };
+
   const chainUncoverWrapper = (cell) => {
     grid.chainUncover(cell);
     setTilesData(grid.cells);
@@ -32,6 +38,7 @@ const GameBoard = ({startTimer}) => {
         startGame={startGame}
         cell={cell}
         chainUncover={chainUncoverWrapper}
+        updateEmptyTileClickCount={updateEmptyTileClickCount}
       />
     )
   });
