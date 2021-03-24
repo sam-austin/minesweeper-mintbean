@@ -22,39 +22,40 @@ const GameTile = ({ row, column, value, startGame, determineResult, cell, chainU
   }
 
   const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
-  const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
+  const determineValueStyles = (val) => ({ color: colorArray[val - 1], backgroundColor: "white"});
 
   let valueClass;
-  let valueStyles;
-  let cursorStyles;
+  let styles;
+  let icon = value;
 
   if (!uncover && playState === "playing") {
-    cursorStyles = { cursor: "pointer" };
+    styles = { cursor: "pointer" };
   }
 
   if (uncover) {
-    valueStyles = determineValueStyles(value);
+    styles = determineValueStyles(value);
     switch (value) {
       case 0: valueClass = "empty";
+        icon = "";
         break;
       case "*": valueClass = "bomb";
+        icon = <img src="https://mine-sweeper-s3.s3.amazonaws.com/mine.svg" alt="bomb" />;
         break;
       case "flag": valueClass = "flag";
+        icon = <img src="https://mine-sweeper-s3.s3.amazonaws.com/flags.svg" alt="flag" />;
         break;
       default: valueClass = "number";
     }
-    determineResult(value)
+    determineResult(value);
   }
 
   return (
     <div
-      className={`game-tile ${valueClass}`}
-      style={cursorStyles}
+      className={`game-tile text-center ${valueClass}`}
+      style={styles}
       onClick={tileClickHandler}
     >
-      <div className="tile-display" style={valueStyles}>
-        {!uncover || value}
-      </div>
+      {!uncover || icon}
     </div>
   );
 };

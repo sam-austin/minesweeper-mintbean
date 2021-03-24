@@ -96,19 +96,12 @@
   height: 40px;
   background-color: rgb(173, 247, 247);
   border: 2px solid black;
+  margin: auto;
+  padding: 8px;
 }
 
-.empty {
-  background-color: white;
-  color: white;
-}
-
-.number {
-  background-color: white;
-}
-
-.tile-display {
-  padding-top: 0.8rem;
+.game-tile.bomb {
+  padding: 0;
 }
 
 .game-board {
@@ -131,12 +124,4 @@
   padding: 5px;
   margin: 10px auto;
   display: flex;
-}
-
-.bomb {
-  background-image: url(https://mine-sweeper-s3.s3.amazonaws.com/mine.svg);
-}
-
-.flag {
-  background-image: url(https://mine-sweeper-s3.s3.amazonaws.com/flags.svg)
 }
