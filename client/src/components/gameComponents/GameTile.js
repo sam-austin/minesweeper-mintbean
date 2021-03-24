@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const GameTile = ({ row, column, value, startGame, cell, chainUncover }) => {
   const [uncover, setUncover] = useState(false);
 
-  const colorArray = ["blue", "green", "red", "purple", "maroon", "turqoise", "black", "grey"];
+  const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
 
   const tileClickHandler = () => {
     startGame({ row, column });
