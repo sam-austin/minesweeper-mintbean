@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Gradient from "javascript-color-gradient";
+import React, { useState } from "react";
 
 const GameTile = ({ row, column, value, startGame, cell, chainUncover, updateEmptyTileClickCount}) => {
   const [uncover, setUncover] = useState(false);
-  
-  const colorGradient = new Gradient;
-  const color1 = "#008000";
-  const color2 = "#FF0000";
-  colorGradient.setMidpoint(3) //this will eventually be set to the mineCount, to have a number of different colors equal to the mines gradually moving from blue to red. 
-  colorGradient.setGradient(color1, color2);
-  const colorArray = colorGradient.getArray();
+
+  const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
 
   const tileClickHandler = () => {
     startGame({ row, column });
@@ -54,7 +48,7 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover, updateEmp
     <div
       className={`game-tile ${valueClass}`}
       style={cursorStyles}
-      onClick={tileClickHandler} 
+      onClick={tileClickHandler}
     >
       <div className="tile-display" style={valueStyles}>
         {!uncover || value}
