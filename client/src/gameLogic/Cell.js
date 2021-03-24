@@ -5,7 +5,6 @@ class Cell {
     this.value = null;
     this.uncovered = false;
   }
-
   uncover() {
     this.uncovered = true;
   }

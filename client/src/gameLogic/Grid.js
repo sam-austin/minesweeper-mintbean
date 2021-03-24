@@ -96,6 +96,15 @@ class Grid {
       }
     });
   }
+
+  uncoverClickedCell(row, column) {
+    const clickedCell = this.cells.find(cell => cell.row === row && cell.column === column)
+    clickedCell.uncovered = true;
+  }
+
+  uncoverAllCells() {
+    this.cells.forEach(cell => cell.uncovered = true)
+  }
 }
 
 export default Grid;
