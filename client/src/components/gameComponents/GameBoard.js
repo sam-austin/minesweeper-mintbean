@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import GameTile from "./GameTile";
 import Grid from "../../gameLogic/Grid";
 
-const GameBoard = ({startTimer}) => {
+const GameBoard = ({ startTimer }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const [grid, setGrid] = useState(new Grid(9, 9, 10));
+  const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
+  const [playState, setPlayState] = useState("playing")
 
   // added to force a re-render of all tiles after each time the chainUncover function is called.
   const [emptyTileClickCount, setEmptyTileClickCount] = useState(0);
@@ -26,7 +27,25 @@ const GameBoard = ({startTimer}) => {
       startTimer();
     }
     setFirstClick(false);
-  };
+  }
+
+  const determineResult = (value) => {
+    if (value === "*") {
+      setPlayState("lose")
+    }
+    const uncoveredTotal = tilesData.filter(cell => cell.uncovered).length
+    if (uncoveredTotal === tilesData.length - 3 && playState !== "win") {
+      setPlayState("win")
+    }
+  }
+
+  if (playState === "win") {
+    const uncoveredTotal = tilesData.filter(cell => cell.uncovered).length
+    if (uncoveredTotal !== grid.cells.length) {
+      grid.uncoverAllCells()
+      setTilesData(grid.cells)
+    }
+  }
 
   const tiles = tilesData.map((cell, index) => {
     return (
@@ -37,7 +56,9 @@ const GameBoard = ({startTimer}) => {
         value={cell.value}
         startGame={startGame}
         cell={cell}
+        determineResult={determineResult}
         chainUncover={chainUncoverWrapper}
+        playState={playState}
         updateEmptyTileClickCount={updateEmptyTileClickCount}
       />
     )

@@ -1,31 +1,33 @@
 import React, { useState } from "react";
 
+
 const GameTile = ({ row, column, value, startGame, cell, chainUncover, updateEmptyTileClickCount}) => {
   const [uncover, setUncover] = useState(false);
 
-  const tileClickHandler = () => {
-    startGame({ row, column });
-    setUncover(true);
-
-    if (cell.value === 0) {
-      chainUncover(cell);
-      updateEmptyTileClickCount();
-    } else {
-      cell.uncover();
+   const tileClickHandler = () => {
+    if (playState === "playing") {
+      startGame({ row, column });
+      setUncover(true);
+      if (cell.value === 0) {
+        chainUncover(cell);
+      } else {
+        cell.uncover();
+      }
     }
   };
-
+  
   if (cell.uncovered && !uncover) {
     setUncover(true);
   }
 
   const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
   const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
+
+  let valueClass; 
   let valueStyles;
   let cursorStyles;
-  let valueClass;
-
-  if (!uncover) {
+  
+  if (!uncover && playState === "playing") {
     cursorStyles = { cursor: "pointer" };
   }
 
@@ -40,6 +42,7 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover, updateEmp
         break;
       default: valueClass = "number";
     }
+    determineResult(value)
   }
 
   return (

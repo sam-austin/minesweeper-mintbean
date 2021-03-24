@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import Timer from "./Timer";
 
 const { Header } = Layout;
+import Grid from "../../gameLogic/Grid"
 
 const GameContainer = () => {
   const [started, setStarted] = useState(false);
