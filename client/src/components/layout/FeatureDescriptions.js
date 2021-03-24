@@ -14,7 +14,7 @@ const FeatureDescriptions = props => {
       <div className="landing-subsection grid-x grid-margin-x">
       
         <div className="cell medium-6 large-4 subsection-img-div">
-          <img alt="town" src="https://around-the-block.s3.amazonaws.com/house-windows.png" />
+          <img alt="town" src="https://mine-sweeper-s3.s3.amazonaws.com/rules.jpg" />
         </div>
         <div className="cell medium-6 large-8 subsection">
           <h1 className="subsection-title">How to Play</h1>
@@ -24,7 +24,7 @@ const FeatureDescriptions = props => {
         </div>
 
         <div className="cell medium-6 large-4 subsection-img-div">
-          <img alt="town" src="https://around-the-block.s3.amazonaws.com/house-windows.png" />
+          <img alt="town" src="https://mine-sweeper-s3.s3.amazonaws.com/puzzle.jpg" />
         </div>
         <div className="cell medium-6 large-8 subsection">
           <h1 className="subsection-title">Background</h1>
@@ -34,7 +34,7 @@ const FeatureDescriptions = props => {
         </div>
 
         <div className="cell medium-12 large-12">
-          <h1 className="subsection-title" style={{ paddingBottom: "50px" }}>The Developers</h1>
+          <h1 className="subsection-title" style={{ paddingBottom: "25px", textAlign: "center" }}>The Developers</h1>
           <div className="developers-section-container">
               <Card
                 className="dev-card"
