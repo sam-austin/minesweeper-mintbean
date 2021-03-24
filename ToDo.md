@@ -4,10 +4,6 @@
 
 - change uncover all to uncover mines/streamline win/lose logic. —Tom
 
-- Icon branch complete and merge. -Sam
-
-- DEPLOY!!! —Maeghan
-
 - Pop up instructions and win/lose message. —Tom&Sam
 
 - Reset Button —Maeghan 
@@ -16,7 +12,9 @@
 
 - Tom extra phrase
 
-- ReadMe
+- ReadMe 
+
+- add nvmrc file
 
 ### Would be nice
 
