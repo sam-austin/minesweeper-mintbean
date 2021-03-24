@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import GameBoard from "./GameBoard";
-import { Layout } from 'antd';
+import { Layout } from "antd";
+import Timer from "./Timer";
 
 const { Header } = Layout;
 import Grid from "../../gameLogic/Grid"
 
 const GameContainer = () => {
-  const grid = new Grid(8, 8, 9);
+  const [started, setStarted] = useState(false);
+  const startTimer = () => {
+    setStarted(true);
+  };
+
   return (
     <div>
       <Header></Header>
-      <div className="game-container">
-        I'm the game container! I have instructions and the board. And maybe the high score thing later.
-        <GameBoard grid={grid} />
+      <div className="game-container grid-container">
+        <Timer started={started}/>
+        <GameBoard startTimer={startTimer} /> 
       </div>
     </div>
   );

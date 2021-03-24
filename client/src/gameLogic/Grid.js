@@ -18,8 +18,14 @@ class Grid {
     return cells;
   }
 
-  getRandomCell() {
-    const randomIndex = Math.floor(Math.random() * this.cells.length);
+  getRandomCell(region) {
+    let randomIndex;
+    if (region === "top") {
+      randomIndex = Math.floor(Math.random() * this.cells.length / 2);
+    }
+    if (region === "bottom") {
+      randomIndex = Math.floor(this.cells.length / 2 + Math.random() * this.cells.length / 2)
+    }
     return this.cells[randomIndex];
   }
 
@@ -28,8 +34,14 @@ class Grid {
   setMines(initialCell) {
     const adjacentCells = this.getAdjacentCells(initialCell);
     let i = 0;
+    let randomCell;
     while (i < this.mineCount) {
-      const randomCell = this.getRandomCell();
+      if (i < Math.floor(this.mineCount / 2)) {
+        randomCell = this.getRandomCell("top");
+      }
+      if (i >= Math.floor(this.mineCount / 2)) {
+        randomCell = this.getRandomCell("bottom")
+      }
       if (randomCell.row !== initialCell.row && randomCell.column !== initialCell.column) {
         if (!adjacentCells.some(cell => cell.row === randomCell.row && cell.column === randomCell.column)) {
           if (!randomCell.value) {
@@ -54,7 +66,25 @@ class Grid {
     ];
 
     return this.cells.filter((cell) => {
-      return adjacentPositions.some((pos) => cell.row == pos.row && cell.column == pos.column);
+      const isAdjacent = adjacentPositions.some(
+        (pos) => cell.row == pos.row && cell.column == pos.column
+      );
+      if (isAdjacent && !cell.uncovered) {
+        return cell;
+      }
+    });
+  }
+
+  chainUncover(clickedCell) {
+    const adjacentCells = this.getAdjacentCells(clickedCell);
+    if (adjacentCells.length === 0) {
+      return;
+    }
+    adjacentCells.forEach((cell) => {
+      cell.uncover();
+      if (cell.value === 0) {
+        this.chainUncover(cell);
+      }
     });
   }
 

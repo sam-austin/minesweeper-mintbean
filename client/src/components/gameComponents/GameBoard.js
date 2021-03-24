@@ -1,18 +1,31 @@
-import React, { useState } from "react"
-import GameTile from "./GameTile"
+import React, { useState } from "react";
+import GameTile from "./GameTile";
+import Grid from "../../gameLogic/Grid";
 
-
-const GameBoard = ({ grid }) => {
+const GameBoard = ({ startTimer }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const [playState, setPlayState] = useState("playing")
+  const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
+  const [playState, setPlayState] = useState("playing")
+  
+  const chainUncoverWrapper = (cell) => {
+    grid.chainUncover(cell);
+    setTilesData(grid.cells);
+  };
+
+  const startGame = (cell) => {
+    if (firstClick) {
+      grid.setMines(cell);
+      grid.setProximityNumbers();
+      setTilesData(grid.cells);
+      startTimer();
 
   const determineResult = (value) => {
     if (value === "*") {
       setPlayState("lose")
     }
     const uncoveredTotal = tilesData.filter(cell => cell.uncovered).length
-    if (uncoveredTotal === tilesData.length - 9) {
+    if (uncoveredTotal === tilesData.length - 40) {
       setPlayState("win")
     }
   }
@@ -25,7 +38,7 @@ const GameBoard = ({ grid }) => {
     setTilesData(grid.cells)
   }
 
-  if (playState === "win" || playState === "lose") {
+  if (playState === "win") {
     grid.uncoverAllCells()
     setTilesData(grid.cells)
   }
@@ -43,10 +56,9 @@ const GameBoard = ({ grid }) => {
         row={cell.row}
         column={cell.column}
         value={cell.value}
-        uncovered={cell.uncovered}
-        playState={playState}
-        determineResult={determineResult}
-        handleTileClick={handleTileClick}
+        startGame={startGame}
+        cell={cell}
+        chainUncover={chainUncoverWrapper}
       />
     )
   });
@@ -55,7 +67,7 @@ const GameBoard = ({ grid }) => {
     <div className="game-board">
       {tiles}
     </div>
-  )
-}
+  );
+};
 
-export default GameBoard
+export default GameBoard;

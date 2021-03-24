@@ -1,7 +1,8 @@
-import React from "react";
-import Gradient from "javascript-color-gradient"
+import React, { useState, useEffect } from "react";
+import Gradient from "javascript-color-gradient";
 
-const GameTile = ({ row, column, value, uncovered, handleTileClick, determineResult }) => {
+const GameTile = ({ row, column, value, startGame, cell, chainUncover, determineResult }) => {
+  const [uncover, setUncover] = useState(false);
 
   const colorGradient = new Gradient;
   const color1 = "#008000";
@@ -9,6 +10,16 @@ const GameTile = ({ row, column, value, uncovered, handleTileClick, determineRes
   colorGradient.setMidpoint(3)
   colorGradient.setGradient(color1, color2);
   const colorArray = colorGradient.getArray();
+
+  const tileClickHandler = () => {
+    startGame({ row, column });
+    setUncover(true);
+    if (cell.value === 0) {
+      chainUncover(cell);
+    } else {
+      cell.uncover();
+    }
+  };
 
   let valueClass;
   let valueStyles;
@@ -18,41 +29,43 @@ const GameTile = ({ row, column, value, uncovered, handleTileClick, determineRes
     handleTileClick(row, column)
   }
 
-  const determineValueStyles = (value) => {
-    return { color: colorArray[value - 1] }
-  }
+  const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
+
+  useEffect(() => {
+    if (cell.uncovered) {
+      setUncover(true);
+    }
+  }, [cell.uncovered]);
 
   if (!uncovered) {
     cursorStyles = { cursor: "pointer" };
   }
 
-  if (uncovered) {
-    valueStyles = determineValueStyles(value)
+  if (uncover) {
+    valueStyles = determineValueStyles(value);
     switch (value) {
-      case 0: valueClass = "empty"
+      case 0: valueClass = "empty";
         break;
-      case "*": valueClass = "bomb"
+      case "*": valueClass = "bomb";
         break;
-      case "flag": valueClass = "flag"
+      case "flag": valueClass = "flag";
         break;
-      default: valueClass = "number"
+      default: valueClass = "number";
     }
     determineResult(value)
   }
-
-
 
   return (
     <div
       className={`game-tile ${valueClass}`}
       style={cursorStyles}
-      onClick={onTileClick}
+      onClick={tileClickHandler}
     >
       <div className="tile-display" style={valueStyles}>
         {!uncovered || value}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default GameTile;
