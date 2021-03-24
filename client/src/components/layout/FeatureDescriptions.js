@@ -4,13 +4,11 @@ import {
   GithubOutlined,
   LinkedinOutlined,
 } from '@ant-design/icons';
-
 const { Content } = Layout;
 const { Meta } = Card
 
-
 const FeatureDescriptions = props => {
-  
+
   return(
     <Content style={{ backgroundColor: "white" }}>
       <div className="landing-subsection grid-x grid-margin-x">
@@ -35,22 +33,64 @@ const FeatureDescriptions = props => {
           </p>
         </div>
 
-        <div>
-        <h1 className="subsection-title">The Developers</h1>
-        <Card
-          hoverable
-          style={{ width: 240 }}
-          cover={<img alt="example" src="https://avatars.githubusercontent.com/u/62975710?s=460&u=386ccd63dc2b0ad6fc3c17fc69798844f98098d4&v=4" />}
-          actions={[
-            <GithubOutlined key="github" />,
-            <LinkedinOutlined key="linkedin" />,
-          ]}
-          >
-          <Meta title="Tom Low" 
-            description="English Major, Teacher, and Theater Maker turned Software Engineer. I live for the point where art and craftsmanship collide." />
-        </Card>
+        <div className="cell medium-12 large-12">
+          <h1 className="subsection-title" style={{ paddingBottom: "50px" }}>The Developers</h1>
+          <div className="developers-section-container">
+              <Card
+                className="dev-card"
+                hoverable
+                bordered={false}
+                cover={<img alt="example" src="https://avatars.githubusercontent.com/u/62975710?s=460&u=386ccd63dc2b0ad6fc3c17fc69798844f98098d4&v=4" />}
+                actions={[
+                  <a href="https://github.com/tomlow">
+                    <GithubOutlined key="github" />
+                  </a>,
+                  <a href="https://www.linkedin.com/in/tlow/">
+                    <LinkedinOutlined key="linkedin" />
+                  </a>
+                ]}
+                >
+                <Meta 
+                  title="Tom Low" 
+                  description="English Major, Teacher, and Theater Maker turned Software Engineer. I live for the point where art and craftsmanship collide. One more phrase." />
+              </Card>
+              <Card
+                className="dev-card"
+                hoverable
+                bordered={false}
+                cover={<img alt="example" src="https://avatars.githubusercontent.com/u/62575735?s=460&v=4" />}
+                actions={[
+                  <a href="https://github.com/maeghanpro">
+                    <GithubOutlined key="github" />
+                  </a>,
+                  <a href="https://www.linkedin.com/in/maeghan-provencher/">
+                    <LinkedinOutlined key="linkedin" />
+                  </a>
+                ]}
+                >
+                <Meta 
+                  title="Maeghan Provencher" 
+                  description="Software Engineer and former 7th grade math teacher always seeking new challenges. Winter hiker, avid knitter, and reality competition show fan." />
+              </Card>
+              <Card
+                className="dev-card"
+                hoverable
+                bordered={false}
+                cover={<img alt="example" src="https://avatars.githubusercontent.com/u/60296310?s=460&u=fcae51be82a9c8f425ac59f99d2bdfc173068e62&v=4" />}
+                actions={[
+                  <a href="https://github.com/sam-austin">
+                    <GithubOutlined key="github" />
+                  </a>,
+                  <a href="https://www.linkedin.com/in/samson-park/">
+                    <LinkedinOutlined key="linkedin" />
+                  </a>
+                ]}
+                >
+                <Meta title="Samson Park" 
+                  description="Former Scrum Master who fell in love with coding. Prior career in biomedical research & health care. Huge fan of basketball, food, and oh yeah, alpacas." />
+              </Card>
+          </div>
         </div>
-      
       </div>
     </Content>
   )
