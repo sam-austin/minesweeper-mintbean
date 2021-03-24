@@ -3,8 +3,6 @@ import React, { useState } from "react";
 const GameTile = ({ row, column, value, startGame, cell, chainUncover, updateEmptyTileClickCount}) => {
   const [uncover, setUncover] = useState(false);
 
-  const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
-
   const tileClickHandler = () => {
     startGame({ row, column });
     setUncover(true);
@@ -17,15 +15,15 @@ const GameTile = ({ row, column, value, startGame, cell, chainUncover, updateEmp
     }
   };
 
-  let valueStyles;
-  let cursorStyles;
-  let valueClass;
-
-  const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
-
   if (cell.uncovered && !uncover) {
     setUncover(true);
   }
+
+  const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
+  const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
+  let valueStyles;
+  let cursorStyles;
+  let valueClass;
 
   if (!uncover) {
     cursorStyles = { cursor: "pointer" };
