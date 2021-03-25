@@ -1,60 +1,56 @@
-import React, { useState } from "react";
+import React from "react";
 
-
-const GameTile = ({ row, column, value, startGame, determineResult, cell, chainUncover, playState, updateEmptyTileClickCount }) => {
-  const [uncover, setUncover] = useState(false);
-
+const GameTile = ({ startGame, cell, chainUncover, interactable, updateTileClickCount, endGame, checkForWin }) => {
   const tileClickHandler = () => {
-    if (playState === "playing") {
-      startGame({ row, column });
-      setUncover(true);
+    if (interactable) {
+      startGame({ row: cell.row, column: cell.column });
       if (cell.value === 0) {
         chainUncover(cell);
-        updateEmptyTileClickCount()
+      } else if (cell.value === "*") {
+        endGame("loss");
       } else {
         cell.uncover();
+        checkForWin();
       }
+      updateTileClickCount();
     }
   };
 
-  if (cell.uncovered && !uncover) {
-    setUncover(true);
-  }
-
   const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
-  const determineValueStyles = (val) => ({ color: colorArray[val - 1] });
+  const determineValueStyles = (val) => ({ color: colorArray[val - 1], backgroundColor: "#afb51a", fontWeight: 500 });
 
-  let valueClass;
-  let valueStyles;
-  let cursorStyles;
 
-  if (!uncover && playState === "playing") {
-    cursorStyles = { cursor: "pointer" };
+  let styles;
+  let valueClass = "uncovered";
+  let icon = cell.value;
+
+  if (!cell.uncovered && interactable) {
+    styles = { cursor: "pointer" };
   }
 
-  if (uncover) {
-    valueStyles = determineValueStyles(value);
-    switch (value) {
-      case 0: valueClass = "empty";
+  if (cell.uncovered) {
+    styles = determineValueStyles(cell.value);
+    switch (cell.value) {
+      case 0: valueClass + " empty";
+        icon = "";
         break;
-      case "*": valueClass = "bomb";
+      case "*": valueClass + " bomb";
+        icon = <img src="https://mine-sweeper-s3.s3.amazonaws.com/mine.svg" alt="bomb" />;
         break;
-      case "flag": valueClass = "flag";
+      case "flag": valueClass + " flag";
+        icon = <img src="https://mine-sweeper-s3.s3.amazonaws.com/flags.svg" alt="flag" />;
         break;
-      default: valueClass = "number";
+      default: valueClass + " number";
     }
-    determineResult(value)
   }
 
   return (
     <div
-      className={`game-tile ${valueClass}`}
-      style={cursorStyles}
+      className={`game-tile text-center ${valueClass}`}
+      style={styles}
       onClick={tileClickHandler}
     >
-      <div className="tile-display" style={valueStyles}>
-        {!uncover || value}
-      </div>
+      {cell.uncovered ? icon : null}
     </div>
   );
 };
