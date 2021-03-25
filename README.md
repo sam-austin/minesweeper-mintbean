@@ -13,9 +13,6 @@ Click click. Boom boom.
 - React - 16.13
 - Express - 4.17.1
 - Node - 14.15
-- PostgreSQL - 8.5.1
-- Objection
-- Knex
 - Ant Design
 - Webpack
 
