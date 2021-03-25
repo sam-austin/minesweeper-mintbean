@@ -28,9 +28,6 @@ const FeatureDescriptions = props => {
           <p>4. Flag all the mines to win!</p>
         </div>
 
-        {/* <div className="cell medium-6 large-4 subsection-img-div">
-          <img alt="town" src="https://mine-sweeper-s3.s3.amazonaws.com/puzzle.jpg" />
-        </div> */}
         <div className="cell medium-12 large-12 subsection">
           <h1 className="subsection-title" style={{ paddingBottom: "25px", textAlign: "center" }}>Background</h1>
           <p>

@@ -29,13 +29,16 @@
 .ant-menu-horizontal > .ant-menu-item a:hover {
   color: #c1c526 !important;
 }
+.ant-menu-horizontal > .ant-menu-item-selected a {
+  color: #c1c526;
+}
 
 .landing-page-top {
   background-image: url(https://around-the-block.s3.amazonaws.com/demining.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  min-height: 579px;
+  min-height: 500px;
   z-index: 2;
 }
 
@@ -272,4 +275,9 @@
 .game-tile.flag:hover {
   filter:brightness(100%);
   animation: 0s;
+}
+
+// how to play modal styles
+.game-steps {
+  text-align: left;
 }
