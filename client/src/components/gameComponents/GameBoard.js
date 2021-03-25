@@ -36,6 +36,9 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
     setInteractable(true);
     setFirstClick(true);
     setTilesData(newGrid.cells);
+    setPaused("Pause")
+    stopTimer()
+    resetTimer()
   };
 
   const endGame = (result) => {
@@ -89,6 +92,7 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
   return (
     <div>
       <button className="new-game-button" type="button" onClick={resetBoard}>New Game</button>
+      <button className="new-game-button" type="button" onClick={pauseHandler}>{paused}</button>
       <div className="game-board">
         {tiles}
       </div>
