@@ -20,7 +20,7 @@ Click click. Boom boom.
 
 3. Repeat.
 
-![playagain](https://media.giphy.com/media/63b50ZYBvOq8DD7KFz/giphy.gif)
+![playagain](https://media.giphy.com/media/ypzjXfjhYRSZoZ4wMb/giphy.gif)
 
 ## Technologies Used
 
