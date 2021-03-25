@@ -56,8 +56,7 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
   };
 
   const checkForWin = () => {
-    const uncoveredCount = tilesData.filter((cell) => cell.uncovered).length;
-    if (uncoveredCount === tilesData.length - grid.mineCount || grid.countFlaggedMines() === grid.mineCount) {
+    if (grid.determineWin()) {
       endGame("win");
     }
   };

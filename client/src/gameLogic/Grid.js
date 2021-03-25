@@ -113,6 +113,11 @@ class Grid {
   countFlaggedMines() {
     return this.cells.filter((cell) => cell.value === "*" && cell.flagged).length;
   }
+
+  determineWin() {
+    const uncoveredCount = this.cells.filter((cell) => cell.uncovered).length;
+    return (uncoveredCount === this.cells.length - this.mineCount || this.countFlaggedMines() === this.mineCount);
+  }
 }
 
 export default Grid;
