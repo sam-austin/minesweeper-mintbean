@@ -19,8 +19,9 @@ const GameTile = ({ startGame, cell, chainUncover, interactable, updateTileClick
   const colorArray = ["blue", "green", "red", "purple", "maroon", "turquoise", "black", "grey"];
   const determineValueStyles = (val) => ({ color: colorArray[val - 1], backgroundColor: "#afb51a", fontWeight: 500 });
 
-  let valueClass;
+
   let styles;
+  let valueClass = "uncovered";
   let icon = cell.value;
 
   if (!cell.uncovered && interactable) {
@@ -30,16 +31,16 @@ const GameTile = ({ startGame, cell, chainUncover, interactable, updateTileClick
   if (cell.uncovered) {
     styles = determineValueStyles(cell.value);
     switch (cell.value) {
-      case 0: valueClass = "empty";
+      case 0: valueClass + " empty";
         icon = "";
         break;
-      case "*": valueClass = "bomb";
+      case "*": valueClass + " bomb";
         icon = <img src="https://mine-sweeper-s3.s3.amazonaws.com/mine.svg" alt="bomb" />;
         break;
-      case "flag": valueClass = "flag";
+      case "flag": valueClass + " flag";
         icon = <img src="https://mine-sweeper-s3.s3.amazonaws.com/flags.svg" alt="flag" />;
         break;
-      default: valueClass = "number";
+      default: valueClass + " number";
     }
   }
 

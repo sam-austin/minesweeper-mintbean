@@ -36,8 +36,8 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
     setInteractable(true);
     setFirstClick(true);
     setTilesData(newGrid.cells);
-    setPaused("Pause")
-    resetTimer()
+    setPaused("Pause");
+    resetTimer();
   };
 
   const endGame = (result) => {
@@ -46,10 +46,10 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
     setInteractable(false);
 
     if (result === "loss") {
-      stopTimer()
+      stopTimer();
       openLossNotification(resetBoard, resetTimer);
     } else if (result === "win") {
-      stopTimer()
+      stopTimer();
       openWinNotification(resetBoard, resetTimer);
     }
   };
@@ -78,15 +78,15 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
 
   const pauseHandler = () => {
     if (interactable) {
-      stopTimer()
-      setInteractable(false)
-      setPaused("Play")
+      stopTimer();
+      setInteractable(false);
+      setPaused("Play");
     } else if (paused === "Play") {
-      startTimer()
-      setInteractable(true)
-      setPaused("Pause")
+      startTimer();
+      setInteractable(true);
+      setPaused("Pause");
     }
-  }
+  };
 
   return (
     <div>

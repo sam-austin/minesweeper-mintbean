@@ -11,28 +11,28 @@ const { Header } = Layout;
 const GameContainer = () => {
   const [started, setStarted] = useState(false);
   const [reset, setReset] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false);
 
   const startTimer = () => {
     setStarted(true);
-    setReset(false)
+    setReset(false);
   };
 
   const stopTimer = () => {
     setStarted(false);
-  }
+  };
 
   const resetTimer = () => {
-    setReset(true)
-  }
+    setReset(true);
+  };
 
   const showModal = () => {
     setModalVisible(true);
-  }
+  };
 
   const handleCancel = () => {
     setModalVisible(false);
-  }
+  };
 
   return (
     <div>
