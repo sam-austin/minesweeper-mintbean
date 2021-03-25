@@ -98,16 +98,20 @@ class Grid {
   }
 
   uncoverClickedCell(row, column) {
-    const clickedCell = this.cells.find(cell => cell.row === row && cell.column === column)
+    const clickedCell = this.cells.find((cell) => cell.row === row && cell.column === column);
     clickedCell.uncovered = true;
   }
 
   uncoverAllMines() {
     this.cells.forEach(cell => {
       if (cell.value === "*") {
-        cell.uncovered = true
+        cell.uncovered = true;
       }
-    })
+    });
+  }
+
+  countFlaggedMines() {
+    return this.cells.filter((cell) => cell.value === "*" && cell.flagged).length;
   }
 }
 

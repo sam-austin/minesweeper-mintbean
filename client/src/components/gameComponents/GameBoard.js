@@ -5,7 +5,7 @@ import Timer from "./Timer";
 
 const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, openLossNotification, started, showModal, reset }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const [grid, setGrid] = useState(new Grid(18, 14, 40));
+  const [grid, setGrid] = useState(new Grid(18, 14, 5));
   const [tilesData, setTilesData] = useState(grid.cells);
   const [interactable, setInteractable] = useState(true);
   const [paused, setPaused] = useState("Pause");
@@ -57,7 +57,7 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
 
   const checkForWin = () => {
     const uncoveredCount = tilesData.filter((cell) => cell.uncovered).length;
-    if (uncoveredCount === tilesData.length - grid.mineCount) {
+    if (uncoveredCount === tilesData.length - grid.mineCount || grid.countFlaggedMines() === grid.mineCount) {
       endGame("win");
     }
   };

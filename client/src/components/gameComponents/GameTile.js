@@ -20,9 +20,11 @@ const GameTile = ({ startGame, cell, chainUncover, interactable, updateTileClick
 
   const rightClickHandler = (event) => {
     event.preventDefault()
-    cell.flag();
-    checkForWin();
-    updateTileClickCount();
+    if (interactable) {
+      cell.flag();
+      checkForWin();
+      updateTileClickCount();
+    }
   };
 
   const colorArray = ["#0050b3", "#237804", "#cf1322", "purple", "maroon", "turquoise", "black", "grey"];
