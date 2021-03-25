@@ -18,13 +18,13 @@ const FeatureDescriptions = props => {
         </div>
         <div className="cell medium-6 large-8 subsection">
           <h1 className="subsection-title">How to Play</h1>
-          <p>Welcome aboard, Cadet. We've got a lot of bombs to sweep.
+          <p>Welcome aboard, Cadet. We've got a lot of bombs to sweep.<br />
 
-          Your Goal: Uncover all the tiles on the board that don't have bombs.
+          Your Goal: Uncover all the tiles on the board that don't have bombs.<br />
 
-          1. Click anywhere on the board to start the game.
+          1. Click anywhere on the board to start the game.<br />
 
-          2. The number on a tile indicates how many mines are adjacent to that tile (diagonals included!)
+          2. The number on a tile indicates how many mines are adjacent to that tile (diagonals included!)<br />
 
           3. Use your skills of reasoning and elimination to uncover tiles—but don't hit a bomb, or it's game over!
           </p>
