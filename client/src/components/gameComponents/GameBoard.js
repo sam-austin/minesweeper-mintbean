@@ -4,7 +4,7 @@ import Grid from "../../gameLogic/Grid";
 
 const GameBoard = ({ startTimer, openWinNotification, openLossNotification }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const [grid, setGrid] = useState(new Grid(18, 14, 5));
+  const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
   const [interactable, setInteractable] = useState(true);
 
