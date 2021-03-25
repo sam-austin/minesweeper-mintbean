@@ -63,6 +63,11 @@
   border-radius: 80px;
   padding: 0.7em 1.5em;
   background-color: #c1c526;
+  margin: 0
+}
+
+.rounded-button-extra:hover {
+  background-color: #645f35;
 }
 
 .landing-grid {
@@ -111,8 +116,8 @@
 
 // game board grid layout
 .game-tile {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   margin: auto;
   padding: 8px;
 }
@@ -126,7 +131,7 @@
 }
 
 .game-tile:hover {
-  animation: bounce 1s;
+  animation: bounce 0.5s;
   filter:brightness(85%)
 }
 
@@ -152,11 +157,12 @@
 }
 
 .game-board {
-  width: 724px;
+  width: 634px;
   display: flex;
   flex-wrap: wrap;
   margin: 20px auto;
   border: 2px solid #bc9360;
+  background-color: #ab8655
 }
 
 .modal-container {
@@ -170,12 +176,19 @@
   text-align: center;
 }
 
+.game-info-container {
+  padding-top:30px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .timer {
   border: 3px solid #545037;
   border-radius: 10px;
   width: fit-content;
   padding: 5px;
-  margin: 10px auto;
+  margin: 0 15px;
   display: flex;
   font-size: 30px;
   font-weight: 650;
@@ -185,15 +198,23 @@
 .new-game-button {
   border: 3px solid #545037;
   border-radius: 10px;
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 650;
   padding: 5px;
-  display: flex;
-  margin: 10px auto;
+  margin-top: 10px;
   cursor: pointer;
 }
 
 .new-game-button:hover {
-  background-color: gray;
+  background-color: #c1c526;
   color: white;
+}
+
+.game-tile.uncovered {
+  background-color: #ab8655;
+}
+
+.game-tile.uncovered:hover {
+  filter:brightness(100%);
+  animation: 0s;
 }
