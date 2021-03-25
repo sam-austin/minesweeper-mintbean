@@ -1,12 +1,12 @@
-# Bombsweeper
+# BombBroomer
 
 Click click. Boom boom.
 
 ## Overview
 
-<b>Bombsweeper</b> is a lightweight web version of the classic desktop game Minesweeper. Initially conceived as an entry in Mintbean's Desktop Puzzle Hackathon event, Bomesweeper was built with React and Node and is supported by Ant Design's component library.
+<b>BombBroomer</b> is a lightweight web version of the classic desktop game Minesweeper. Initially conceived as an entry in Mintbean's Desktop Puzzle Hackathon event, BombBroomer was built with React and Node and is supported by Ant Design's component library.
 
-[Click here to visit Bombsweeper's Heroku page](https://minesweeper-mintbean.herokuapp.com/)
+[Click here to visit BombBroomer's Heroku page](https://minesweeper-mintbean.herokuapp.com/)
 
 ## Technologies Used
 
