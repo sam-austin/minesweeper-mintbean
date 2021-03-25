@@ -12,19 +12,17 @@ Click click. Boom boom.
 
 1. Click anywhere on the board to start a game. Numbers indicate the adjacent mines (including diagonals!)
 
-![start](https://media.giphy.com/media/bcCuBJvxaa3bT2ww66/giphy.gif)
+![start](https://media.giphy.com/media/Y2sDsD5txlhB1SbrT3/giphy.gif)
 
 2. Place flags as you go to remember where the mines are.
 
-Gif
+![flag](https://media.giphy.com/media/db23nE7VIXcTIf46uX/giphy.gif)
 
 3. Flag all the mines, or be in for an explosive surprise!
 
-![mine](https://media.giphy.com/media/63b50ZYBvOq8DD7KFz/giphy.gif)
+![mine](https://media.giphy.com/media/MnnPdplI2Y2z09puyO/giphy.gif)
 
 4. Repeat.
-
-![playagain](https://media.giphy.com/media/ypzjXfjhYRSZoZ4wMb/giphy.gif)
 
 ## Local Run Instructions
 
