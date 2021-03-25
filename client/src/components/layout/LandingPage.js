@@ -27,7 +27,7 @@ const LandingPage = props => {
                     <br></br>
                     2. Analyze
                     <br></br>
-                    3. Place the flags
+                    3. Survive
                   </p>
                   <div className="get-started-button">
                     <Link to="/game" className="rounded-button-extra button large">
