@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import GameTile from "./GameTile";
 import Grid from "../../gameLogic/Grid";
 
-const GameBoard = ({ startTimer, stopTimer, openWinNotification, openLossNotification }) => {
+const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, openLossNotification }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const [grid, setGrid] = useState(new Grid(18, 14, 5));
+  const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
   const [interactable, setInteractable] = useState(true);
   const [paused, setPaused] = useState("Pause");
@@ -44,9 +44,11 @@ const GameBoard = ({ startTimer, stopTimer, openWinNotification, openLossNotific
     setInteractable(false);
 
     if (result === "loss") {
-      openLossNotification(resetBoard);
+      stopTimer()
+      openLossNotification(resetBoard, resetTimer);
     } else if (result === "win") {
-      openWinNotification(resetBoard);
+      stopTimer()
+      openWinNotification(resetBoard, resetTimer);
     }
   };
 
