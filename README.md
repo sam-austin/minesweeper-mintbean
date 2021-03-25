@@ -30,6 +30,7 @@ Starts the Express server. This application can be accessed locally at http://lo
 
 ## Coming Soon
 
+- Flagging features
 - High Score Saving and Display Table
 - Different Difficulty Settings
 - Win/lose animations
