@@ -5,7 +5,7 @@ import Timer from "./Timer";
 
 const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, openLossNotification, started, showModal, reset }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const [grid, setGrid] = useState(new Grid(18, 14, 5));
+  const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
   const [interactable, setInteractable] = useState(true);
   const [paused, setPaused] = useState("Pause");
@@ -97,6 +97,9 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
           </div>
         </div>  
         <Timer started={started} reset={reset} />
+        <div className="mine-counter text-center">
+          {grid.mineCount - grid.countFlaggedCells()}
+        </div>
         <div className="rounded-button-extra button large" style={{ padding: "0.7em 1.742em" }} onClick={resetBoard}>
           New Game 
         </div>

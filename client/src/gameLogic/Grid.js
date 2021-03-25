@@ -110,6 +110,10 @@ class Grid {
     });
   }
 
+  countFlaggedCells() {
+    return this.cells.filter((cell) => cell.flagged).length
+  }
+
   countFlaggedMines() {
     return this.cells.filter((cell) => cell.value === "*" && cell.flagged).length;
   }
