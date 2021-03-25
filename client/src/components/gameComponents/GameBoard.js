@@ -2,13 +2,34 @@ import React, { useState } from "react";
 import GameTile from "./GameTile";
 import Grid from "../../gameLogic/Grid";
 import Timer from "./Timer";
+import LoseModal from "../layout/LoseModal"
+import WinModal from "../layout/WinModal"
 
-const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, openLossNotification, started, showModal, reset }) => {
+const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, openLossNotification, started, showModal, reset, handleCancel }) => {
   const [firstClick, setFirstClick] = useState(true);
   const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
   const [interactable, setInteractable] = useState(true);
   const [paused, setPaused] = useState("Pause");
+
+  const [lossModalVisible, setLossModalVisible] = useState(false);
+  const [winModalVisible, setWinModalVisible] = useState(false);
+
+  const showLossModal = () => {
+    setLossModalVisible(true);
+  };
+
+  const handleLossCancel = () => {
+    setLossModalVisible(false);
+  };
+
+  const showWinModal = () => {
+    setWinModalVisible(true);
+  };
+
+  const handleWinCancel = () => {
+    setWinModalVisible(false);
+  };
 
   // added to force a re-render of all tiles after each time the chainUncover function is called.
   const [tileClickCount, setTileClickCount] = useState(0);
@@ -48,10 +69,10 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
 
     if (result === "loss") {
       stopTimer();
-      openLossNotification(resetBoard, resetTimer);
+      showLossModal()
     } else if (result === "win") {
       stopTimer();
-      openWinNotification(resetBoard, resetTimer);
+      showWinModal()
     }
   };
 
@@ -106,6 +127,8 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
       <div className="game-board">
         {tiles}
       </div>
+      <LoseModal modalVisible={lossModalVisible} handleCancel={handleLossCancel} resetBoard={resetBoard} />
+      <WinModal modalVisible={winModalVisible} handleCancel={handleWinCancel} resetBoard={resetBoard} />
     </div>
   );
 };

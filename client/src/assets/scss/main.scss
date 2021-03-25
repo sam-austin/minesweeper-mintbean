@@ -4,6 +4,7 @@
 @import "antd/dist/antd.css";
 
 // place global css here
+
 *,
 *::before,
 *::after {
@@ -114,6 +115,16 @@
   border-top-right-radius: 15px;
 }
 
+.attr-text {
+  font-size: 9px;
+  text-align: center;
+}
+
+.attr-text p {
+  margin: 0;
+  padding: 0;
+}
+
 // game board grid layout
 .game-tile {
   width: 35px;
@@ -168,6 +179,17 @@
 .modal-container {
   justify-content: center;
   text-align: center;
+  height: 350px;
+}
+
+.loss-background {
+  background-image: url(https://media.giphy.com/media/jp8ULEy5ciznZwUFAM/giphy.gif);
+  background-size: contain;
+}
+
+.win-background {
+  background-image: url(https://media.giphy.com/media/llUeFDNRaLWvokhbat/giphy.gif);
+  background-size: contain;
 }
 
 // game-container layout
