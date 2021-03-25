@@ -21,6 +21,15 @@
   height: 40px;
 }
 
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected {
+  color: #c1c526 !important;
+  border-bottom: 2px solid #c1c526;
+}
+
+.ant-menu-horizontal > .ant-menu-item a:hover {
+  color: #c1c526 !important;
+}
+
 .landing-page-top {
   background-image: url(https://around-the-block.s3.amazonaws.com/demining.jpg);
   background-position: center;
@@ -209,12 +218,11 @@
 .timer {
   border: 3px solid #545037;
   border-radius: 10px;
-  width: fit-content;
+  width: 105px;
   padding: 5px;
   margin: 0 15px;
-  display: flex;
   font-family: 'Orbitron', sans-serif;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 650;
   color: #ea4c4c
 }
@@ -226,7 +234,7 @@
   padding: 5px;
   margin-right: 15px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 650;
   color: #ea4c4c;
   text-align: center;
@@ -252,6 +260,11 @@
 }
 
 .game-tile.uncovered:hover {
+  filter:brightness(100%);
+  animation: 0s;
+}
+
+.game-tile.flag:hover {
   filter:brightness(100%);
   animation: 0s;
 }
