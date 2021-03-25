@@ -3,11 +3,12 @@ import GameTile from "./GameTile";
 import Grid from "../../gameLogic/Grid";
 import Timer from "./Timer";
 
-const GameBoard = ({ startTimer, openWinNotification, openLossNotification, started, showModal }) => {
+const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, openLossNotification, started, showModal }) => {
   const [firstClick, setFirstClick] = useState(true);
-  const [grid, setGrid] = useState(new Grid(18, 14, 5));
+  const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
   const [interactable, setInteractable] = useState(true);
+  const [paused, setPaused] = useState("Pause");
 
   // added to force a re-render of all tiles after each time the chainUncover function is called.
   const [tileClickCount, setTileClickCount] = useState(0);
@@ -36,6 +37,8 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification, star
     setInteractable(true);
     setFirstClick(true);
     setTilesData(newGrid.cells);
+    setPaused("Pause");
+    resetTimer();
   };
 
   const endGame = (result) => {
@@ -44,9 +47,11 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification, star
     setInteractable(false);
 
     if (result === "loss") {
-      openLossNotification(resetBoard);
+      stopTimer();
+      openLossNotification(resetBoard, resetTimer);
     } else if (result === "win") {
-      openWinNotification(resetBoard);
+      stopTimer();
+      openWinNotification(resetBoard, resetTimer);
     }
   };
 
@@ -72,6 +77,18 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification, star
     )
   });
 
+  const pauseHandler = () => {
+    if (interactable) {
+      stopTimer();
+      setInteractable(false);
+      setPaused("Play");
+    } else if (paused === "Play") {
+      startTimer();
+      setInteractable(true);
+      setPaused("Pause");
+    }
+  };
+
   return (
     <div>
       <div className="game-info-container">
@@ -85,6 +102,7 @@ const GameBoard = ({ startTimer, openWinNotification, openLossNotification, star
           New Game
         </div>
       </div>
+      <button className="new-game-button" type="button" onClick={pauseHandler}>{paused}</button>
       <div className="game-board">
         {tiles}
       </div>

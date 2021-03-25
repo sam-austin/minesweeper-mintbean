@@ -9,25 +9,35 @@ const { Header } = Layout;
 
 const GameContainer = () => {
   const [started, setStarted] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false)
+  const [reset, setReset] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const startTimer = () => {
     setStarted(true);
+    setReset(false);
+  };
+
+  const stopTimer = () => {
+    setStarted(false);
+  };
+
+  const resetTimer = () => {
+    setReset(true);
   };
 
   const showModal = () => {
     setModalVisible(true);
-  }
+  };
 
   const handleCancel = () => {
     setModalVisible(false);
-  }
+  };
 
   return (
     <div>
       <Header></Header>
       <div className="game-container grid-container">
-        <GameBoard startTimer={startTimer} openWinNotification={openWinNotification} openLossNotification={openLossNotification} started={started} showModal={showModal}/>
+        <GameBoard startTimer={startTimer} stopTimer={stopTimer} resetTimer={resetTimer} openWinNotification={openWinNotification} openLossNotification={openLossNotification} started={started} showModal={showModal}/>
         <HowToPlayModal modalVisible={modalVisible} handleCancel={handleCancel} />
       </div>
     </div>

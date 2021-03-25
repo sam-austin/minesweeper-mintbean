@@ -1,13 +1,14 @@
 import React from "react";
 import { Button, notification, Icon } from "antd";
 
-const openLossNotification = (resetBoard) => {
+const openLossNotification = (resetBoard, resetTimer) => {
   const key = `open${Date.now()}`;
   const btn = (
     <Button type="primary" size="small" onClick={() => {
-        resetBoard()
-        notification.close(key)
-      }}
+      resetBoard()
+      resetTimer()
+      notification.close(key)
+    }}
     >
       Play Again?
     </Button>
