@@ -37,7 +37,6 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
     setFirstClick(true);
     setTilesData(newGrid.cells);
     setPaused("Pause")
-    stopTimer()
     resetTimer()
   };
 
