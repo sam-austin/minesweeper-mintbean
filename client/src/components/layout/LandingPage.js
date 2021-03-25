@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Layout } from 'antd';
-const { Header, Content } = Layout;
+const { Content, Footer } = Layout;
 import FeatureDescriptions from './FeatureDescriptions'
 
 const LandingPage = props => {
@@ -42,6 +42,16 @@ const LandingPage = props => {
           <FeatureDescriptions />
         </div>
       </div>
+      <Footer style={{ padding: "12px", backgroundColor: "#c1c526"}}>
+        <div className="attr-text">
+        <p>
+          Vector illustrations provided by <a href='https://www.freepik.com/vectors'> pch.vector & Macrovector</a>
+        </p>
+        <p>
+        Icons made by <a href="https://www.flaticon.com/authors/creaticca-creative-agency" title="Creaticca Creative Agency">Creaticca Creative Agency</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </p>
+        </div>
+      </Footer>
     </Layout>
   );
 };

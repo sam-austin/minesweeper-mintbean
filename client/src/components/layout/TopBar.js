@@ -13,7 +13,7 @@ const TopBar = props => {
         </Menu.Item>
         <Menu.Item key="2" style={{float: "left"}}>
           <Link to="/">
-            BombSweeper
+            BombBroomer
           </Link>
         </Menu.Item>
         <Menu.Item key="3" style={{float: "left"}}>

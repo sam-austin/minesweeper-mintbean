@@ -19,9 +19,8 @@ const HowToPlayModal = ({ modalVisible, handleCancel }) => {
         <p>5. Flag all the mines to win!</p>
 
       </div>
-
     </Modal>
   )
 }
 
-export default HowToPlayModal
+export default HowToPlayModal;

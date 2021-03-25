@@ -4,8 +4,6 @@
 
 - Landing page content Tom&Sam
 
-- How to play Modal text
-
 - Tom extra phrase
 
 - ReadMe 
