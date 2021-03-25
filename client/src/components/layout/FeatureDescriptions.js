@@ -13,25 +13,26 @@ const FeatureDescriptions = props => {
     <Content style={{ backgroundColor: "white" }}>
       <div className="landing-subsection grid-x grid-margin-x">
 
-        <div className="cell medium-6 large-4 subsection-img-div">
-          <img alt="town" src="https://mine-sweeper-s3.s3.amazonaws.com/rules.jpg" />
+        <div className="cell medium-12 large-12 subsection">
+          <h1 className="subsection-title" style={{ paddingBottom: "25px", textAlign: "center" }}>How to Play</h1>
         </div>
-        <div className="cell medium-6 large-8 subsection">
-          <h1 className="subsection-title">How to Play</h1>
-          <p>Good timing, Cadet. We've got a lot of mines to find.<br /><br />
-            <strong>Your Goal:</strong> Locate all the mines without setting them off.<br /><br />
-          1. Click anywhere on the board to start the game.<br /><br />
-          2. The number on a tile indicates how many mines are adjacent to that tile (diagonals included!)<br /><br />
-          3. Use your skills of reasoning and elimination to uncover tiles. Flag mines with right click.<br /><br />
-          4. Flag all the mines to win!
-          </p>
+        <div className="cell medium-6 large-4 subsection-img-div">
+          <img alt="town" src="https://mine-sweeper-s3.s3.amazonaws.com/Screen+Shot+2021-03-25+at+11.18.49+AM.png" />
+        </div>
+        <div className="cell medium-6 large-8 subsection-1">
+          <p>Good timing, Cadet. We've got a lot of mines to find.</p>
+          <p><strong>Your Goal:</strong> Locate all the mines without setting them off.</p>
+          <p>1. Click anywhere on the board to start the game.</p>
+          <p>2. The number on a tile indicates how many mines are adjacent to that tile (diagonals included!)</p>
+          <p>3. Use your skills of reasoning and elimination to uncover tiles. Flag mines with right click.</p>
+          <p>4. Flag all the mines to win!</p>
         </div>
 
-        <div className="cell medium-6 large-4 subsection-img-div">
+        {/* <div className="cell medium-6 large-4 subsection-img-div">
           <img alt="town" src="https://mine-sweeper-s3.s3.amazonaws.com/puzzle.jpg" />
-        </div>
-        <div className="cell medium-6 large-8 subsection">
-          <h1 className="subsection-title">Background</h1>
+        </div> */}
+        <div className="cell medium-12 large-12 subsection">
+          <h1 className="subsection-title" style={{ paddingBottom: "25px", textAlign: "center" }}>Background</h1>
           <p>
             We're three junior developers who have put our caffeine- and curiosity-fueled brains together in this take on the classic desktop game Minesweeper. The project was conceived as an entry in Mintbean's Desktop Games Hackathon, and was built with React and Node. At this point we've spent more time playing it than we have building it, and we hope it hooks you too!
           </p>
