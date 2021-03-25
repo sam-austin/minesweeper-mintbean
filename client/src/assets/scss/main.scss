@@ -63,6 +63,7 @@
   border-radius: 80px;
   padding: 0.7em 1.5em;
   background-color: #c1c526;
+  margin: 0
 }
 
 .landing-grid {
@@ -170,12 +171,19 @@
   text-align: center;
 }
 
+.game-info-container {
+  padding-top:30px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .timer {
   border: 3px solid #545037;
   border-radius: 10px;
   width: fit-content;
   padding: 5px;
-  margin: 10px auto;
+  margin: 0 15px;
   display: flex;
   font-size: 30px;
   font-weight: 650;
@@ -189,7 +197,6 @@
   font-weight: 650;
   padding: 5px;
   display: flex;
-  margin: 10px auto;
   cursor: pointer;
 }
 
