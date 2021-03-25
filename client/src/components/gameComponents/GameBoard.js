@@ -77,8 +77,7 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
   };
 
   const checkForWin = () => {
-    const uncoveredCount = tilesData.filter((cell) => cell.uncovered).length;
-    if (uncoveredCount === tilesData.length - grid.mineCount) {
+    if (grid.determineWin()) {
       endGame("win");
     }
   };
@@ -119,6 +118,9 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
           </div>
         </div>  
         <Timer started={started} reset={reset} />
+        <div className="mine-counter">
+          {grid.mineCount - grid.countFlaggedCells()}
+        </div>
         <div className="rounded-button-extra button large" style={{ padding: "0.7em 1.742em" }} onClick={resetBoard}>
           New Game 
         </div>
