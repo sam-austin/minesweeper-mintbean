@@ -97,7 +97,7 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
           </div>
         </div>  
         <Timer started={started} reset={reset} />
-        <div className="mine-counter text-center">
+        <div className="mine-counter">
           {grid.mineCount - grid.countFlaggedCells()}
         </div>
         <div className="rounded-button-extra button large" style={{ padding: "0.7em 1.742em" }} onClick={resetBoard}>
