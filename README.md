@@ -10,27 +10,23 @@ Click click. Boom boom.
 
 ## Instructions
 
-1. Click anywhere on the board to start a game.
+1. Click anywhere on the board to start a game. Numbers indicate the adjacent mines (including diagonals!)
 
 ![start](https://media.giphy.com/media/bcCuBJvxaa3bT2ww66/giphy.gif)
 
-2. Use your skills of reasoning to avoid the mines, or face an explosive surprise!
+2. Place flags as you go to remember where the mines are.
+
+Gif
+
+3. Flag all the mines, or be in for an explosive surprise!
 
 ![mine](https://media.giphy.com/media/63b50ZYBvOq8DD7KFz/giphy.gif)
 
-3. Repeat.
+4. Repeat.
 
 ![playagain](https://media.giphy.com/media/ypzjXfjhYRSZoZ4wMb/giphy.gif)
 
-## Technologies Used
-
-- React - 16.13
-- Express - 4.17.1
-- Node - 14.15
-- Ant Design
-- Webpack
-
-## Available Scripts and Installation Instructions
+## Local Run Instructions
 
 Clone the repo and run the following:
 
@@ -42,9 +38,16 @@ Installs dependencies
 
 Starts the Express server. This application can be accessed locally at http://localhost:3000
 
+## Technologies Used
+
+- React - 16.13
+- Express - 4.17.1
+- Node - 14.15
+- Ant Design
+- Webpack
+
 ## Coming Soon
 
-- Flagging features
 - High Score Saving and Display Table
-- Different Difficulty Settings
+- Difficulty drop down menu
 - Win/lose animations
