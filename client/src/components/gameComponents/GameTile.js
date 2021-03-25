@@ -51,7 +51,7 @@ const GameTile = ({ startGame, cell, chainUncover, interactable, updateTileClick
     }
   } else if (cell.flagged) {
     valueClass = "flag";
-    icon = <img src="https://mine-sweeper-s3.s3.amazonaws.com/flags.svg" alt="flag" />;
+    icon = <img src="https://mine-sweeper-s3.s3.amazonaws.com/flag-gray.svg" alt="flag" />;
   }
 
   return (
