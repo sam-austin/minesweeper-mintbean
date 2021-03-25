@@ -4,9 +4,15 @@ class Cell {
     this.column = column;
     this.value = null;
     this.uncovered = false;
+    this.flagged = false;
   }
+
   uncover() {
     this.uncovered = true;
+  }
+
+  flag() {
+    this.flagged = !this.flagged;
   }
 }
 
