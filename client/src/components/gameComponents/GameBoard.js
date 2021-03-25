@@ -3,7 +3,7 @@ import GameTile from "./GameTile";
 import Grid from "../../gameLogic/Grid";
 import Timer from "./Timer";
 
-const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, openLossNotification, started, showModal }) => {
+const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, openLossNotification, started, showModal, reset }) => {
   const [firstClick, setFirstClick] = useState(true);
   const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
@@ -97,9 +97,9 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
             Game Rules
           </div>
         </div>  
-        <Timer started={started} />
-        <div className="rounded-button-extra button large" onClick={resetBoard}>
-          New Game
+        <Timer started={started} reset={reset} />
+        <div className="rounded-button-extra button large" style={{ padding: "0.7em 1.742em" }} onClick={resetBoard}>
+          New Game 
         </div>
       </div>
       <button className="new-game-button" type="button" onClick={pauseHandler}>{paused}</button>
