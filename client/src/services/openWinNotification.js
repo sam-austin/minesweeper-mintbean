@@ -2,13 +2,14 @@ import React from "react"
 import { Button, notification } from 'antd';
 
 
-const openWinNotification = (resetBoard) => {
+const openWinNotification = (resetBoard, resetTimer) => {
   const key = `open${Date.now()}`;
   const btn = (
     <Button type="primary" size="small" onClick={() => {
-        resetBoard();
-        notification.close(key);
-      }}
+      resetBoard();
+      resetTimer();
+      notification.close(key);
+    }}
     >
       Play Again?
     </Button>
