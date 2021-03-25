@@ -29,6 +29,9 @@
 .ant-menu-horizontal > .ant-menu-item a:hover {
   color: #c1c526 !important;
 }
+.ant-menu-horizontal > .ant-menu-item-selected a {
+  color: #c1c526;
+}
 
 .landing-page-top {
   background-image: url(https://around-the-block.s3.amazonaws.com/demining.jpg);
