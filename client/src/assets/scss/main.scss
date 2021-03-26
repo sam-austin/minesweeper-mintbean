@@ -281,3 +281,21 @@
 .game-steps {
   text-align: left;
 }
+
+@media only screen and (max-width: 600px) {
+  .game-tile {
+    width: 25px;
+    height: 25px;
+    margin: auto;
+    padding: 0;
+  }
+
+  .game-board {
+    width: 454px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    border: 2px solid #bc9360;
+    background-color: #ab8655
+  }
+}
