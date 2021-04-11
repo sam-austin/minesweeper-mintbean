@@ -60,6 +60,7 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, started, showModal, rese
     setTilesData(newGrid.cells);
     setPaused("Pause");
     resetTimer();
+    stopTimer();
   };
 
   const endGame = (result) => {
