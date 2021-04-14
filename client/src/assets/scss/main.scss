@@ -160,7 +160,7 @@
 }
 
 .game-tile:hover {
-  animation: bounce 0.5s;
+  animation: bounce 0.3s;
   filter:brightness(85%)
 }
 
@@ -203,6 +203,8 @@
 .loss-background {
   background-image: url(https://media.giphy.com/media/jp8ULEy5ciznZwUFAM/giphy.gif);
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .win-background {

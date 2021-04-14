@@ -5,7 +5,7 @@ import Timer from "./Timer";
 import LoseModal from "../layout/LoseModal"
 import WinModal from "../layout/WinModal"
 
-const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, openLossNotification, started, showModal, reset, handleCancel }) => {
+const GameBoard = ({ startTimer, stopTimer, resetTimer, started, showModal, reset }) => {
   const [firstClick, setFirstClick] = useState(true);
   const [grid, setGrid] = useState(new Grid(18, 14, 40));
   const [tilesData, setTilesData] = useState(grid.cells);
@@ -60,6 +60,7 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
     setTilesData(newGrid.cells);
     setPaused("Pause");
     resetTimer();
+    stopTimer();
   };
 
   const endGame = (result) => {
@@ -125,7 +126,12 @@ const GameBoard = ({ startTimer, stopTimer, resetTimer, openWinNotification, ope
           New Game 
         </div>
       </div>
-      <button className="new-game-button" type="button" onClick={pauseHandler}>{paused}</button>
+      <button 
+        className="new-game-button" 
+        type="button" 
+        onClick={!firstClick ? pauseHandler : null}>
+          {paused}
+      </button>
       <div className="game-board">
         {tiles}
       </div>

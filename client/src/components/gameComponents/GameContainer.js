@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import GameBoard from "./GameBoard";
 import { Layout } from "antd";
 import HowToPlayModal from "../layout/HowToPlayModal"
-import openWinNotification from "../../services/openWinNotification";
-import openLossNotification from "../../services/openLossNotification"
 const { Header } = Layout;
-
 
 const GameContainer = () => {
   const [started, setStarted] = useState(false);
@@ -37,8 +34,7 @@ const GameContainer = () => {
     <div>
       <Header></Header>
       <div className="game-container grid-container">
-        <GameBoard startTimer={startTimer} stopTimer={stopTimer} resetTimer={resetTimer} openWinNotification={openWinNotification} openLossNotification={openLossNotification} started={started} showModal={showModal} reset={reset}
-        handleCancel={handleCancel}
+        <GameBoard startTimer={startTimer} stopTimer={stopTimer} resetTimer={resetTimer} started={started} showModal={showModal} reset={reset}
         />
         <HowToPlayModal modalVisible={modalVisible} handleCancel={handleCancel} />
       </div>
